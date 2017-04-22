@@ -65,10 +65,6 @@
 
 # include                   "libft.h"
 
-typedef struct s_trans      t_trans;
-typedef struct s_state      t_state;
-typedef struct s_nfa        t_nfa;
-typedef struct s_re_entry   t_re_entry;
 typedef void                (*t_func)(char **, t_list **, int *);
 
 struct                      s_trans

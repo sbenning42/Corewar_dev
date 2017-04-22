@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 14:11:35 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/20 13:40:31 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/22 14:01:05 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		vm_check_process_i(t_vm *vm, t_process *p)
 	{
 		p->dead = 1;
 		if (ISBIT(vm->config.verb, VM_DEATH_VERB))
-			ft_printf("Process %lld hasn't lived for %u cycles (CTD %u)\n",\
+			ft_printf("Process %ld hasn't lived for %ld cycles (CTD %d)\n",\
 					p->id,\
 					p->live,\
 					vm->gconfig.cycle_to_die);

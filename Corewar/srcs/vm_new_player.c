@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 15:23:00 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/19 16:25:52 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/22 13:54:21 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void			vm_new_player(t_vm *vm, char *name, long int id)
 
 	ft_bzero(&player, sizeof(t_player));
 	if (vm->config.nb_player >= vm->gconfig.max_player)
-		return ;
+		vm_fatal(84);
 	if (!(player.file = open_file(name, O_RDONLY)))
 	{
 		vm_error_notaccess(name);

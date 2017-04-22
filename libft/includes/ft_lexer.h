@@ -1,11 +1,8 @@
 #ifndef FT_LEXER
 # define FT_LEXER
 
-# include "ft_automaton.h"
+# include "libft.h"
 
-typedef struct s_lexer      t_lexer;
-typedef struct s_lexem      t_lexem;
-typedef struct s_analyzer   t_analyzer;
 
 struct                      s_lexem
 {

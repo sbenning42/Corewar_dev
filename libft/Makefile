@@ -6,7 +6,7 @@
 #    By: sbenning <sbenning@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/09/08 20:00:17 by sbenning          #+#    #+#              #
-#*   Updated: 2016/03/19 13:32:47 by sbenning         ###   ########.fr       *#
+#*   Updated: 2017/04/22 13:34:24 by                  ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -130,7 +130,24 @@ SRC =	ft_mem/ft_memset.c\
 		ft_exit/ft_exit.c\
 		ft_dyn/ft_dyn.c\
 		ft_dyn/ft_dynstd.c\
-		ft_global/ft_global.c
+		ft_global/ft_global.c\
+		ft_nfa/explicit_rpn.c\
+		ft_nfa/ft_gen_lex.c\
+		ft_nfa/ft_lexer.c\
+		ft_nfa/lexer_del.c\
+		ft_nfa/nfa_add.c\
+		ft_nfa/nfa_atom_preset.c\
+		ft_nfa/nfa.c\
+		ft_nfa/nfa_del.c\
+		ft_nfa/nfa_dump.c\
+		ft_nfa/nfa_eval.c\
+		ft_nfa/nfa_kleen_preset.c\
+		ft_nfa/nfa_new.c\
+		ft_nfa/nfa_preset.c\
+		ft_nfa/nfa_set.c\
+		ft_nfa/nfa_trans.c\
+		ft_nfa/regex_explicit.c\
+		ft_nfa/rpn_nfa.c
 
 OBJ =		$(SRC:.c=.o)
 
@@ -156,4 +173,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
 

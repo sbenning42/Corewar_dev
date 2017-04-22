@@ -6,7 +6,7 @@
 /*   By: sbenning <sbenning@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/25 17:59:34 by sbenning          #+#    #+#             */
-/*   Updated: 2017/03/27 08:22:24 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/22 13:38:33 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@
 # include "ft_exit.h"
 # include "ft_printf.h"
 # include "ft_parser.h"
+# include "ft_lexer.h"
+# include "ft_automaton.h"
 
 #endif

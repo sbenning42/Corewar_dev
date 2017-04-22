@@ -6,7 +6,7 @@
 #*   By: sbenning <sbenning@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2015/12/18 23:33:22 by sbenning          #+#    #+#             *#
-#*   Updated: 2017/04/22 12:28:29 by                  ###   ########.fr       *#
+#*   Updated: 2017/04/22 13:44:24 by                  ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -14,25 +14,8 @@ NAME =			corewar
 
 SRC =			main.c\
                 ft_file.c\
-                ft_gen_lex.c\
-                ft_lexer.c\
                 get_next_line.c\
-                nfa_add.c\
-                nfa_atom_preset.c\
-                nfa.c\
-                nfa_del.c\
-                nfa_dump.c\
-                nfa_eval.c\
-                nfa_kleen_preset.c\
-                nfa_new.c\
-                nfa_preset.c\
-                nfa_set.c\
-                nfa_trans.c\
                 op.c\
-                regex_explicit.c\
-                explicit_rpn.c\
-                rpn_nfa.c\
-                lexer_del.c\
 				vm_error.c\
 				vm_main.c\
 				vm_args.c\
@@ -119,4 +102,3 @@ fclean : clean lfclean
 	rm -f $(NAME)
 
 re : fclean lre all
-
