@@ -13,8 +13,8 @@
 ASM_NAME =		asm
 COREWAR_NAME =	corewar
 
-ASM_DIR =		Asm/
-COREWAR_DIR =	Corewar/
+ASM_DIR =		asm_part/
+COREWAR_DIR =	corewar_part/
 
 ASM =			$(addprefix $(ASM_DIR), $(ASM_NAME))
 COREWAR =		$(addprefix $(COREWAR_DIR), $(COREWAR_NAME))
