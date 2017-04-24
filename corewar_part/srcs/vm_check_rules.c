@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm_check_rules.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  <>                                        +#+  +:+       +#+        */
+/*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/13 19:32:58 by                   #+#    #+#             */
-/*   Updated: 2017/04/23 10:45:26 by sbenning         ###   ########.fr       */
+/*   Created: 2017/04/24 10:36:53 by sbenning          #+#    #+#             */
+/*   Updated: 2017/04/24 10:37:00 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int					vm_check_cycle(t_vm *vm)
 {
 	if ((vm->gconfig.cycle_to_die > 0)\
 			&& (vm->config.cycle != vm->gconfig.cycle_to_die))
-	   return (1);
+		return (1);
 	vm->config.cycle = 0;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 10:53:50 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/13 08:38:39 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/24 10:50:04 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static t_vmerror	g_vmerror[] = {\
 	{VM_EUSAGE, VM_MUSAGE},\
 	{VM_EMALLOC, "Can't perform malloc."},\
+	{VM_ETOOMUCH, "Too much players... Max is 4"},\
 	{0, NULL}\
 };
 

@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 14:56:52 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/24 09:17:14 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/24 11:47:33 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,12 @@ void	vm_handler_opcode_ld(t_vm *vm, t_process *p, t_instruction *ins)
 		return ;
 	}
 	p->registre[index] = value;
-	if (!p->registre[index])
-		p->carry = 1;
-	else
-		p->carry = 0;
+	p->carry = (p->registre[index] ? 0 : 1);
 	vm_pc_move(vm, p, ins, 1);
 }
 
 void	vm_handler_opcode_st(t_vm *vm, t_process *p, t_instruction *ins)
 {
-	int	pc;
-	int	index;
-	int	offset;
 	int	value;
 	int	err;
 
@@ -55,22 +49,9 @@ void	vm_handler_opcode_st(t_vm *vm, t_process *p, t_instruction *ins)
 		return ;
 	}
 	if (ins->args[1].type == reg_arg)
-	{
-		index = ins->args[1].value;
-		if (check_reg_index(vm, index))
-		{
-			vm_pc_move(vm, p, ins, 0);
-			return ;
-		}
-		p->registre[index] = value;
-	}
+		vm_handler_opcode_st_reg(vm, p, ins, value);
 	else if (ins->args[1].type == ind_arg)
-	{
-		offset = ins->args[1].value % vm->gconfig.idx_mod;
-		pc = vm_pc(vm, p->pc + offset);
-		write_int(vm, &pc, value);
-	}
-	vm_pc_move(vm, p, ins, 1);
+		vm_handler_opcode_st_ind(vm, p, ins, value);
 }
 
 void	vm_handler_opcode_ldi(t_vm *vm, t_process *p, t_instruction *ins)

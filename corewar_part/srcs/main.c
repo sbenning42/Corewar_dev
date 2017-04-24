@@ -6,13 +6,13 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 10:45:42 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/24 08:49:27 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/24 10:19:01 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int					vm_finish(t_vm *vm)
+int			vm_finish(t_vm *vm)
 {
 	if (vm_check_cycle(vm))
 		return (0);
@@ -27,7 +27,7 @@ int					vm_finish(t_vm *vm)
 	return (0);
 }
 
-void				vm_loop(t_vm *vm)
+void		vm_loop(t_vm *vm)
 {
 	vm_put_players(vm);
 	while (42)
@@ -45,21 +45,21 @@ void				vm_loop(t_vm *vm)
 	}
 }
 
-void				vm_cleanup(t_vm *vm)
+void		vm_cleanup(t_vm *vm)
 {
 	ft_lstdel(&vm->player, vm_del_player);
 	ft_lstdel(&vm->process, vm_del_process);
 }
 
-int					main(int ac, char **av)
+int			main(int ac, char **av)
 {
-	t_vm			vm;
+	t_vm	vm;
 
 	set_main(ac, av);
 	if (ac < 2)
 		vm_fatal(VM_EUSAGE);
-    vm_setup(&vm);
-    vm_loop(&vm);
-    vm_cleanup(&vm);
+	vm_setup(&vm);
+	vm_loop(&vm);
+	vm_cleanup(&vm);
 	return (0);
 }

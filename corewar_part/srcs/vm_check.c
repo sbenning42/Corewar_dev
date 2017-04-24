@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 14:11:35 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/22 14:01:05 by                  ###   ########.fr       */
+/*   Updated: 2017/04/24 10:34:55 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void		vm_check_live(t_vm *vm)
 		else
 			vm->gconfig.cycle_to_die = 0;
 		if (ISBIT(vm->config.verb, VM_CYCLE_VERB))
-			ft_printf("Cycle to die is now %d (nb_live)\n", vm->gconfig.cycle_to_die);
+			ft_printf("Cycle to die is now %d (nb_live)\n",\
+					vm->gconfig.cycle_to_die);
 		vm->config.nb_check = 0;
 	}
 	else
@@ -64,7 +65,8 @@ void		vm_check_checks(t_vm *vm)
 		else
 			vm->gconfig.cycle_to_die = 0;
 		if (ISBIT(vm->config.verb, VM_CYCLE_VERB))
-			ft_printf("Cycle to die is now %d (check)\n", vm->gconfig.cycle_to_die);
+			ft_printf("Cycle to die is now %d (check)\n",\
+					vm->gconfig.cycle_to_die);
 		vm->config.nb_check = 0;
 	}
 }

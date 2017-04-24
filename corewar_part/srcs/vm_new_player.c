@@ -6,45 +6,11 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 15:23:00 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/22 13:54:21 by                  ###   ########.fr       */
+/*   Updated: 2017/04/24 11:22:51 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
-
-static char		*get_color(void)
-{
-	static char	*color[] = {\
-		"\033[38;2;0;0;255m",\
-		"\033[38;2;255;0;0m",\
-		"\033[38;2;0;255;0m",\
-		"\033[38;2;255;255;0m"\
-	};
-	static int	i = -1;
-
-	return (color[(++i % TABSIZE(color))]);
-}
-
-int				is_available_id(t_vm *vm, long int id)
-{
-	t_list		*l;
-
-	l = vm->player;
-	while (l)
-	{
-		if (((t_player *)l->content)->id == id)
-			return (0);
-		l = l->next;
-	}
-	return (1);
-}
-
-static long int	get_id(t_vm *vm, long int id)
-{
-	while (!is_available_id(vm, id))
-		--id;
-	return (id);
-}
 
 static void		vm_load_player_file(t_player *p)
 {
@@ -75,6 +41,12 @@ static int		vm_check_champ_size(t_vm *vm, t_player *player)
 	return (0);
 }
 
+static void		fnorme(t_player *player, long int id, char *color)
+{
+	player->id = id;
+	player->color = color;
+}
+
 void			vm_new_player(t_vm *vm, char *name, long int id)
 {
 	t_player	player;
@@ -82,7 +54,7 @@ void			vm_new_player(t_vm *vm, char *name, long int id)
 
 	ft_bzero(&player, sizeof(t_player));
 	if (vm->config.nb_player >= vm->gconfig.max_player)
-		vm_fatal(84);
+		vm_fatal(VM_ETOOMUCH);
 	if (!(player.file = open_file(name, O_RDONLY)))
 	{
 		vm_error_notaccess(name);
@@ -97,8 +69,7 @@ void			vm_new_player(t_vm *vm, char *name, long int id)
 	}
 	vm_load_player_file(&player);
 	close_file(&player.file);
-	player.id = get_id(vm, id);
-	player.color = get_color();
+	fnorme(&player, get_player_id(vm, id), get_color());
 	if (!(l = ft_lstnew(&player, sizeof(t_player))))
 		vm_fatal(VM_EMALLOC);
 	ft_lstadd_back(&vm->player, l);

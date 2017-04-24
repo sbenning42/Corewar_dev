@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vm_load_process.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/04/24 10:30:39 by sbenning          #+#    #+#             */
+/*   Updated: 2017/04/24 10:31:19 by sbenning         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "vm.h"
 
 static long int		get_id(void)
@@ -7,8 +19,7 @@ static long int		get_id(void)
 	return (++i);
 }
 
-void				vm_new_process\
-						(t_vm *vm, int pc, long int id, char *color)
+void				vm_new_process(t_vm *vm, int pc, long int id, char *color)
 {
 	t_list			*l;
 	t_process		process;
@@ -25,8 +36,7 @@ void				vm_new_process\
 	ft_lstadd(&vm->process, l);
 }
 
-void				vm_new_fprocess\
-						(t_vm *vm, int pc, t_process *p)
+void				vm_new_fprocess(t_vm *vm, int pc, t_process *p)
 {
 	t_list			*l;
 	t_process		process;
@@ -55,6 +65,7 @@ void				vm_load_process(t_vm *vm)
 	size_t			offset;
 	t_list			*l;
 	t_player		*player;
+	int				i;
 
 	start = 0;
 	offset = vm->gconfig.mem_size / vm->config.nb_player;
@@ -64,7 +75,7 @@ void				vm_load_process(t_vm *vm)
 		player = (t_player *)l->content;
 		player->pc = start;
 		ft_memcpy(vm->memory + start, player->binary, player->binary_size);
-		int i = -1;
+		i = -1;
 		while (++i < (int)player->binary_size)
 			vm->color[start + i] = player->color;
 		vm_new_process(vm, start, player->id, player->color);

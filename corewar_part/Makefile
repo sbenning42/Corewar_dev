@@ -21,12 +21,14 @@ SRC =			main.c\
 				vm_args.c\
 				vm_setup.c\
 				vm_load_args.c\
-				vm_handler_args.c\
+				vm_handler_args_p1.c\
+				vm_handler_args_p2.c\
 				vm_new_player.c\
                 vm_put_memory.c\
 				vm_load_process.c\
 				vm_play_process.c\
 				vm_handler_opcode_first_set.c\
+				vm_handler_opcode_st.c\
 				vm_handler_opcode_second_set.c\
 				vm_handler_opcode_third_set.c\
 				vm_handler_opcode_fourth_set.c\
