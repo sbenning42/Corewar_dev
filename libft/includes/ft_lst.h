@@ -16,12 +16,12 @@
 # include "ft_header.h"
 # include "ft_mem.h"
 
-typedef struct		s_list
+struct				s_list
 {
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
-}					t_list;
+};
 
 t_list				*ft_lstnew(const void *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));

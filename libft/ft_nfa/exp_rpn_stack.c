@@ -11,7 +11,7 @@ t_re_entry		eval_stack(t_list *stack)
 	return (*(t_re_entry *)stack->content);
 }
 
-void			push_stack(t_list **stack, t_re_entry re)
+void			push_stack_exp(t_list **stack, t_re_entry re)
 {
 	t_list		*l;
 

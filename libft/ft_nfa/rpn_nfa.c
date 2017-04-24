@@ -1,16 +1,5 @@
 #include "ft_automaton.h"
 
-/********************** A ENLEVER ET A METTRE DANS .H *************************/
-
-typedef int				(*t_factor)(t_list **, t_re_entry *);
-typedef struct s_disp	t_disp;
-struct					s_disp
-{
-	char				c;
-	t_factor			f;
-};
-/******************************************************************************/
-
 t_disp					g_dispatch[] = {\
 	{REX_RANGE_CODE, range_f},\
 	{REX_POINT_CODE, rpn_joker_f},\
@@ -22,7 +11,7 @@ t_disp					g_dispatch[] = {\
 	{0, NULL}\
 };
 
-static t_nfa			*nfa_make_range(t_nfa *a1, t_nfa **a2)
+t_nfa					*nfa_make_range(t_nfa *a1, t_nfa **a2)
 {
 	t_trans				*t1;
 	t_trans				*t2;

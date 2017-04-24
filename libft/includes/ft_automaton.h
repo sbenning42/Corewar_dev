@@ -65,7 +65,13 @@
 
 # include                   "libft.h"
 
-typedef void                (*t_func)(char **, t_list **, int *);
+
+
+struct						s_disp
+{
+	char					c;
+	t_factor				f;
+};
 
 struct                      s_trans
 {
@@ -213,7 +219,7 @@ void                        rpn_dump(t_list *rpn);
 **							exp_rpn_stack.c
 */
 
-void						push_stack(t_list **stack, t_re_entry re);
+void						push_stack_exp(t_list **stack, t_re_entry re);
 t_re_entry					eval_stack(t_list *stack);
 t_re_entry					pop_stack(t_list **stack);
 
@@ -235,6 +241,7 @@ int							is_prior(t_re_entry r1, t_re_entry r2);
 */
 
 t_nfa                       *rpn2nfa(t_list *rpn);
+t_nfa						*nfa_make_range(t_nfa *a1, t_nfa **a2);
 
 /*
 **                          rpn_nfa_f_kleen.c
@@ -250,7 +257,7 @@ int							kleen_star_f(t_list **stack, t_re_entry *rex);
 
 int							range_f(t_list **stack, t_re_entry *rex);
 int							atom_f(t_list **stack, t_re_entry *rex);
-int							rpn_joker_f_f(t_list **stack, t_re_entry *rex);
+int							rpn_joker_f(t_list **stack, t_re_entry *rex);
 int							conjonction_f(t_list **stack, t_re_entry *rex);
 int							disjonction_f(t_list **stack, t_re_entry *rex);
 

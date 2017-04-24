@@ -29,6 +29,8 @@ typedef unsigned char		t_uchar;
 typedef unsigned long int	t_ulong;
 typedef unsigned short int	t_ushort;
 
+typedef struct s_list		t_list;
+
 typedef struct s_trans      t_trans;
 typedef struct s_state      t_state;
 typedef struct s_nfa        t_nfa;
@@ -37,4 +39,9 @@ typedef struct s_re_entry   t_re_entry;
 typedef struct s_lexer      t_lexer;
 typedef struct s_lexem      t_lexem;
 typedef struct s_analyzer   t_analyzer;
+
+typedef void                (*t_func)(char **, t_list **, int *);
+typedef int					(*t_factor)(t_list **, t_re_entry *);
+typedef struct s_disp		t_disp;
+
 #endif

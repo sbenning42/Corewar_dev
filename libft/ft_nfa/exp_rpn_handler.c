@@ -38,7 +38,7 @@ static void		rpn_handler_other_op(t_list **rpn, t_list **stack, t_list *exp)
 		re = pop_stack(stack);
 		push_rpn(rpn, re);
 	}
-	push_stack(stack, *(t_re_entry *)exp->content);
+	push_stack_exp(stack, *(t_re_entry *)exp->content);
 }
 
 static void		rpn_handler_op(t_list **rpn, t_list **stack, t_list *exp)
