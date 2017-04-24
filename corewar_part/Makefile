@@ -12,35 +12,42 @@
 
 NAME =			corewar
 
-SRC =			main.c\
-                ft_file.c\
+SRC =           ft_file.c\
                 get_next_line.c\
+				main.c\
                 op.c\
-				vm_error.c\
-				vm_main.c\
+				vm_access_arg.c\
+				vm_access_bin.c\
+				vm_access.c\
+				vm_access_endian.c\
+				vm_access_fill.c\
+				vm_access_read.c\
+				vm_access_swap_and_bin.c\
 				vm_args.c\
-				vm_setup.c\
-				vm_load_args.c\
+				vm_check.c\
+                vm_check_rules.c\
+                vm_declare.c\
+                vm_del.c\
+				vm_error.c\
+                vm_get.c\
 				vm_handler_args_p1.c\
 				vm_handler_args_p2.c\
-				vm_new_player.c\
-                vm_put_memory.c\
-				vm_load_process.c\
-				vm_play_process.c\
 				vm_handler_opcode_first_set.c\
 				vm_handler_opcode_st.c\
 				vm_handler_opcode_second_set.c\
 				vm_handler_opcode_third_set.c\
 				vm_handler_opcode_fourth_set.c\
-                vm_is.c\
-                vm_get.c\
+				vm_is.c\
+				vm_load_args.c\
+				vm_load_process.c\
+				vm_main.c\
+				vm_new_player.c\
+				vm_player_id.c\
+				vm_play_process.c\
+                vm_put_instruction.c\
+                vm_put_memory.c\
                 vm_set.c\
-                vm_check.c\
-                vm_check_rules.c\
-                vm_declare.c\
-				vm_put_instruction.c\
-				vm_access.c\
-                vm_del.c
+				vm_setup.c
 
 SRC_DIR =		srcs/
 OBJ_DIR =		obj/

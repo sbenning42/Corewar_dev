@@ -425,6 +425,18 @@ void							vm_handler_opcode_lfork(t_vm *vm, t_process *p, t_instruction *ins);
 */
 
 /*
+**								vm_handler_opcode_st.c
+*/
+
+
+void							vm_handler_opcode_st_reg(t_vm *vm, t_process *p, t_instruction *ins, int value);
+void							vm_handler_opcode_st_ind(t_vm *vm, t_process *p, t_instruction *ins, int value);
+
+/*
+********************************************************************************
+*/
+
+/*
 **								vm_check.c
 */
 
@@ -506,17 +518,94 @@ void							vm_put_instruction(t_vm *vm, t_process *p, t_instruction *ins);
 **								vm_access.c
 */
 
-unsigned char					bin_access(t_vm *vm, int pc);
+int								(*dispatch_access(unsigned char ocp))(t_insarg_i *, t_vm *, int *, int);
 void							vm_read_instruction(t_vm *vm, int pc, t_instruction *ins, unsigned char opcode);
-int								access_arg_value(t_insarg_i *arg, t_vm *vm, t_process *p, int *err);
-void							write_int(t_vm *vm, int *pc, int value);
-int								read_int(t_vm *vm, int *pc);
-int								vm_pc(t_vm *vm, int pc);
 int								check_reg_index(t_vm *vm, int i);
 
 /*
 ********************************************************************************
 */
 
-char				*vm_get_player_name(t_vm *vm, int id);
+/*
+**								vm_access_endian.c
+*/
+
+int								ft_endian(void);
+int								ft_bigint(int i);
+int								ft_littleint(int i);
+short							ft_bigshort(short sh);
+short							ft_littleshort(short sh);
+
+/*
+********************************************************************************
+*/
+
+/*
+**								vm_access_bin.c
+*/
+
+int								vm_pc(t_vm *vm, int pc);
+unsigned char					bin_access(t_vm *vm, int pc);
+unsigned char					*bin_access_w(t_vm *vm, int pc);
+char							bin_char(t_vm *vm, int pc);
+
+/*
+********************************************************************************
+*/
+
+/*
+**								vm_access_swap_and_bin.c
+*/
+
+int								ft_intswap(int i);
+short							ft_shortswap(short sh);
+short							bin_short(t_vm *vm, int pc);
+int								bin_int(t_vm *vm, int pc);
+
+/*
+********************************************************************************
+*/
+
+/*
+**								vm_access_read.c
+*/
+
+int								read_int(t_vm *vm, int *pc);
+void							write_int(t_vm *vm, int *pc, int value);
+int								read_short(t_vm *vm, int *pc);
+int								read_char(t_vm *vm, int *pc);
+
+/*
+********************************************************************************
+*/
+
+/*
+**								vm_access_fill.c
+*/
+
+void							fill_args(t_instruction *ins, t_vm *vm, int pc, int label_size);
+int								fill_reg(t_insarg_i *arg, t_vm *vm, int *pc, int label_size);
+int								fill_ind(t_insarg_i *arg, t_vm *vm, int *pc, int label_size);
+int								fill_dir(t_insarg_i *arg, t_vm *vm, int *pc, int label_size);
+int								fill_null(t_insarg_i *arg, t_vm *vm, int *pc, int label_size);
+
+/*
+********************************************************************************
+*/
+
+/*
+**								vm_access_arg.c
+*/
+
+int								access_reg_arg(t_insarg_i *arg, t_process *p, int *err);
+int								access_dir_arg(t_insarg_i *arg);
+int								access_ind_arg(t_insarg_i *arg, t_vm *vm, t_process *p);
+int								access_arg_value(t_insarg_i *arg, t_vm *vm, t_process *p, int *err);
+
+/*
+********************************************************************************
+*/
+
+char							*vm_get_player_name(t_vm *vm, int id);
+
 #endif

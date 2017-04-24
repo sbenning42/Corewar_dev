@@ -38,7 +38,7 @@ static t_vm_opcode_h	g_opcode_handler[] = {\
 	{0x10, vm_handler_opcode_aff}\
 };
 
-static void				(*dispatch(unsigned char op))(t_vm *, t_process *,\
+static void				(*dispatch_play(unsigned char op))(t_vm *, t_process *,\
 		t_instruction *ins)
 {
 	size_t				i;
@@ -63,7 +63,7 @@ static void				vm_play_process_i(t_vm *vm, t_process *process)
 		return ;
 	ft_bzero(&ins, sizeof(t_instruction));
 	vm_read_instruction(vm, process->pc, &ins, process->opcode);
-	dispatch(process->opcode)(vm, process, &ins);
+	dispatch_play(process->opcode)(vm, process, &ins);
 	vm_set_timer(vm, process);
 }
 

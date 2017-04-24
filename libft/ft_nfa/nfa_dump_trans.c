@@ -1,5 +1,7 @@
 #include "ft_automaton.h"
 
+extern char		*g_fmt[];
+
 void			nfa_dump_trans_entry(t_list *l, int color)
 {
 	t_trans		*t;

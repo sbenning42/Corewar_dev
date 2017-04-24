@@ -30,7 +30,7 @@ static t_vm_args_h	g_args_handler[] = {\
 	{VM_CHAMP_ARG, vm_handler_arg_champion}\
 };
 
-static void			(*dispatch(int id))(t_vm *, char *)
+static void			(*dispatch_load(int id))(t_vm *, char *)
 {
 	size_t			i;
 
@@ -50,7 +50,7 @@ void				vm_load_args(t_vm *vm)
 
 	while ((l = get_arg()))
 	{
-		dispatch(l->id)(vm, l->value);
+		dispatch_load(l->id)(vm, l->value);
 		lexem_del(&l);
 	}
 	del_args();

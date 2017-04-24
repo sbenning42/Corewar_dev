@@ -16,7 +16,7 @@ void			explicit_conjonction(t_list **stack, int *n)
 	*n -= 1;
 }
 
-int				dispatch(char c)
+int				dispatch_regex(char c)
 {
 	if (c == '\\')
 		return (0);
@@ -38,7 +38,7 @@ t_list			*regex2explicit(char *regex)
 	n = 0;
 	while (*regex)
 	{
-		g_func[dispatch(*regex)](&regex, &stack, &n);
+		g_func[dispatch_regex(*regex)](&regex, &stack, &n);
 		++regex;
 	}
 	return (stack);

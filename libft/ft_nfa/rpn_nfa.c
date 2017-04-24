@@ -23,7 +23,7 @@ t_nfa					*nfa_make_range(t_nfa *a1, t_nfa **a2)
 	return (a1);
 }
 
-static t_factor			dispatch(t_re_entry *rex)
+static t_factor			dispatch_rpn(t_re_entry *rex)
 {
 	int					i;
 
@@ -43,7 +43,7 @@ static t_nfa			*rec_rpn2nfa(t_list **stack, t_list *rpn)
 	if (!rpn)
 		return (pop_stack_rpn(stack));
 	rex = (t_re_entry *)rpn->content;
-	if (dispatch(rex)(stack, rex))
+	if (dispatch_rpn(rex)(stack, rex))
 		return (NULL);
 	return (rec_rpn2nfa(stack, rpn->next));
 }

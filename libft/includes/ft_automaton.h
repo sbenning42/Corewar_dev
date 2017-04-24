@@ -170,6 +170,7 @@ void                        nfa_eval_tokens(t_list **tokens, char *scan);
 int                         nfa_eval_tokens_step\
                                 (t_nfa *nfa, t_list **tokens,\
                                  char *scan, int size, int *max);
+void						nfa_union_tokens(t_list **l1, t_list *l2);
 
 /*
 **                          nfa_eval_rec.c
@@ -189,6 +190,7 @@ t_list						*nfa_play_token(t_list *token, char c);
 
 t_list                      *regex2explicit(char *regex);
 void                        regex_explicit_dump(t_list *stack);
+void						explicit_conjonction(t_list **stack, int *n);
 
 /*
 **                          regex_push.c
@@ -214,6 +216,7 @@ void						nop_f(char **regex, t_list **stack, int *n);
 
 t_list                      *explicit2rpn(t_list *exp);
 void                        rpn_dump(t_list *rpn);
+void						push_rpn(t_list **rpn, t_re_entry re);
 
 /*
 **							exp_rpn_stack.c
@@ -266,8 +269,8 @@ int							disjonction_f(t_list **stack, t_re_entry *rex);
 */
 
 t_nfa						*pop_stack_rpn(t_list **stack);
-t_nfa						*eval_stack_rpn(t_list **stack);
-t_nfa						*push_stack_rpn(t_list **stack, t_nfa *nfa);
+t_nfa						*eval_stack_rpn(t_list *stack);
+int							push_stack_rpn(t_list **stack, t_nfa *nfa);
 
 /*
 **							rpn_push.c

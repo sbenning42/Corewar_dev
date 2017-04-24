@@ -132,7 +132,12 @@ SRC =	ft_mem/ft_memset.c\
 		ft_dyn/ft_dynstd.c\
 		ft_global/ft_global.c\
 		ft_nfa/explicit_rpn.c\
+		ft_nfa/exp_rpn_handler.c\
+		ft_nfa/exp_rpn_prior.c\
+		ft_nfa/exp_rpn_stack.c\
 		ft_nfa/ft_gen_lex.c\
+		ft_nfa/ft_gen_lex_scan.c\
+		ft_nfa/ft_gen_lex_tool.c\
 		ft_nfa/ft_lexer.c\
 		ft_nfa/lexer_del.c\
 		ft_nfa/nfa_add.c\
@@ -140,14 +145,22 @@ SRC =	ft_mem/ft_memset.c\
 		ft_nfa/nfa.c\
 		ft_nfa/nfa_del.c\
 		ft_nfa/nfa_dump.c\
+		ft_nfa/nfa_dump_trans.c\
 		ft_nfa/nfa_eval.c\
+		ft_nfa/nfa_eval_rec.c\
 		ft_nfa/nfa_kleen_preset.c\
 		ft_nfa/nfa_new.c\
 		ft_nfa/nfa_preset.c\
 		ft_nfa/nfa_set.c\
 		ft_nfa/nfa_trans.c\
 		ft_nfa/regex_explicit.c\
-		ft_nfa/rpn_nfa.c
+		ft_nfa/regex_f_tool.c\
+		ft_nfa/regex_push.c\
+		ft_nfa/rpn_f_tool.c\
+		ft_nfa/rpn_nfa.c\
+		ft_nfa/rpn_nfa_f_kleen.c\
+		ft_nfa/rpn_push.c\
+		ft_nfa/rpn_stack.c
 
 OBJ =		$(SRC:.c=.o)
 
