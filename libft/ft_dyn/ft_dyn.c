@@ -6,7 +6,7 @@
 /*   By: sbenning <sbenning@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/06 18:05:32 by sbenning          #+#    #+#             */
-/*   Updated: 2016/03/15 12:54:01 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/24 10:32:10 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int			dyn_strdel(t_dynstr *dynstr)
 	return (0);
 }
 
-int					dyn_strpushstr(t_dynstr *dynstr, char *str, size_t len)
+int			dyn_strpushstr(t_dynstr *dynstr, char *str, size_t len)
 {
 	if (!dynstr->str)
 		return (-1);
@@ -64,9 +64,9 @@ int					dyn_strpushstr(t_dynstr *dynstr, char *str, size_t len)
 	return (0);
 }
 
-int					dyn_strpopstr(t_dynstr *dynstr, size_t len)
+int			dyn_strpopstr(t_dynstr *dynstr, size_t len)
 {
-	size_t			llen;
+	size_t	llen;
 
 	if (!dynstr->str)
 		return (-1);
@@ -76,7 +76,7 @@ int					dyn_strpopstr(t_dynstr *dynstr, size_t len)
 	return (0);
 }
 
-void				dyn_strclr(t_dynstr *dynstr)
+void		dyn_strclr(t_dynstr *dynstr)
 {
 	ft_bzero((void *)dynstr->str, dynstr->used);
 	dynstr->used = 0;

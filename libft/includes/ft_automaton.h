@@ -136,32 +136,46 @@ void                        nfa_set_terminal(t_nfa *nfa, t_state *state);
 **                          nfa_trans.c
 */
 
-int                         nfa_trans\
-                                (t_state *from, t_state *to,\
-                                 char start, char end);
+int                         nfa_trans(t_state *from, t_state *to, \
+										char start, char end);
 int                         nfa_eps_trans(t_state *from, t_state *to);
 
 /*
 **                          nfa_dump.c
 */
 
-void                        nfa_dump_trans_entry(t_list *l, int color);
 void                        nfa_dump_eps_trans_entry(t_list *l, int color);
-void                        nfa_dump_trans(t_list *l, int color);
 void                        nfa_dump_eps_trans(t_list *l, int color);
 void                        nfa_dump_state(t_state *state, int color);
 void                        nfa_dump_all_state(t_list *state, int color);
 
 /*
+**                          nfa_dump_trans.c
+*/
+
+void                        nfa_dump_trans_entry(t_list *l, int color);
+void                        nfa_dump_trans(t_list *l, int color);
+
+/*
 **                          nfa_eval.c
 */
 
-void                        nfa_eval_tokens\
-                                (t_list **tokens, char *scan);
+void                        nfa_eval_tokens(t_list **tokens, char *scan);
 int                         nfa_eval_tokens_step\
                                 (t_nfa *nfa, t_list **tokens,\
                                  char *scan, int size, int *max);
-void                        nfa_clone_tokens(t_list **tokens);
+
+/*
+**                          nfa_eval_rec.c
+*/
+
+void						nfa_rec_clone_tokens(t_list **tokens, \
+										t_list *token);
+void						nfa_clone_token(t_list **tokens);
+void						nfa_clone_tokens(t_list **tokens);
+void						nfa_rec_play_tokens(t_list **trans, \
+										t_list *closure, char c);
+t_list						*nfa_play_token(t_list *token, char c);
 
 /*
 **                          regex_explicit.c
@@ -171,6 +185,24 @@ t_list                      *regex2explicit(char *regex);
 void                        regex_explicit_dump(t_list *stack);
 
 /*
+**                          regex_push.c
+*/
+
+void						push_stack(t_list **stack, int type, char c);
+void						push_val(t_list **stack, int *n, char c);
+void						push_op(t_list **stack, int *n, char c);
+
+/*
+**                          regex_f_tool.c
+*/
+
+void						esc_f(char **regex, t_list **stack, int *n);
+void						joker_f(char **regex, t_list **stack, int *n);
+void						op_f(char **regex, t_list **stack, int *n);
+void						val_f(char **regex, t_list **stack, int *n);
+void						nop_f(char **regex, t_list **stack, int *n);
+
+/*
 **                          explicit_rpn.c
 */
 
@@ -178,10 +210,65 @@ t_list                      *explicit2rpn(t_list *exp);
 void                        rpn_dump(t_list *rpn);
 
 /*
+**							exp_rpn_stack.c
+*/
+
+void						push_stack(t_list **stack, t_re_entry re);
+t_re_entry					eval_stack(t_list *stack);
+t_re_entry					pop_stack(t_list **stack);
+
+/*
+**							exp_rpn_handler.c
+*/
+
+void						rpn_handler(t_list **rpn, t_list **stack, \
+											t_list *exp);
+
+/*
+**							exp_rpn_prior.c
+*/
+
+int							is_prior(t_re_entry r1, t_re_entry r2);
+
+/*
 **                          rpn_nfa.c
 */
 
 t_nfa                       *rpn2nfa(t_list *rpn);
+
+/*
+**                          rpn_nfa_f_kleen.c
+*/
+
+int							kleen_point_f(t_list **stack, t_re_entry *rex);
+int							kleen_plus_f(t_list **stack, t_re_entry *rex);
+int							kleen_star_f(t_list **stack, t_re_entry *rex);
+
+/*
+**                          rpn_nfa_f_kleen.c
+*/
+
+int							range_f(t_list **stack, t_re_entry *rex);
+int							atom_f(t_list **stack, t_re_entry *rex);
+int							rpn_joker_f_f(t_list **stack, t_re_entry *rex);
+int							conjonction_f(t_list **stack, t_re_entry *rex);
+int							disjonction_f(t_list **stack, t_re_entry *rex);
+
+/*
+**							rpn_stack.c
+*/
+
+t_nfa						*pop_stack_rpn(t_list **stack);
+t_nfa						*eval_stack_rpn(t_list **stack);
+t_nfa						*push_stack_rpn(t_list **stack, t_nfa *nfa);
+
+/*
+**							rpn_push.c
+*/
+
+int							push_unary(t_list **stack, t_nfa *(*f)(t_nfa *));
+int							push_binary(t_list **stack, \
+									t_nfa *(*f)(t_nfa *, t_nfa *));
 
 /*
 **                          nfa_del.c
