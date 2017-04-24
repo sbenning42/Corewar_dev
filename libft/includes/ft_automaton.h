@@ -245,7 +245,7 @@ int							kleen_plus_f(t_list **stack, t_re_entry *rex);
 int							kleen_star_f(t_list **stack, t_re_entry *rex);
 
 /*
-**                          rpn_nfa_f_kleen.c
+**                          rpn_nfa_f_tool.c
 */
 
 int							range_f(t_list **stack, t_re_entry *rex);
