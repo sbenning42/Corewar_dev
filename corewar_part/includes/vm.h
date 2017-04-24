@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 10:51:41 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/22 14:00:36 by                  ###   ########.fr       */
+/*   Updated: 2017/04/24 09:59:47 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,7 +238,7 @@ struct                          s_process
     int							pc;
     int                         registre[REG_NUMBER + 1];
     unsigned int                carry;
-    unsigned int				timer;
+    int							timer;
     long int					live;
     int							dead;
 	unsigned char				opcode;
@@ -355,6 +355,7 @@ void							vm_new_fprocess(t_vm *vm, int pc, t_process *p);
 */
 
 void							vm_play_process(t_vm *vm);
+void							vm_pc_move(t_vm *vm, t_process *p, t_instruction *ins, int flag);
 
 /*
 ********************************************************************************

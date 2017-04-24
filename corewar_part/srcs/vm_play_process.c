@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 13:20:49 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/20 16:05:06 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/24 10:07:26 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,12 @@ static void				vm_play_process_i(t_vm *vm, t_process *process)
 	t_instruction		ins;
 
 	process->live += 1;
-	if (process->timer > 1)
-	{
-		process->timer -= 1;
+	process->timer -= 1;
+	if (process->timer > 0)
 		return ;
-	}
 	ft_bzero(&ins, sizeof(t_instruction));
 	vm_read_instruction(vm, process->pc, &ins, process->opcode);
-	dispatch(ins.op)(vm, process, &ins);
+	dispatch(process->opcode)(vm, process, &ins);
 	vm_set_timer(vm, process);
 }
 
@@ -77,4 +75,12 @@ void					vm_play_process(t_vm *vm)
 		vm_play_process_i(vm, (t_process *)l->content);
 		l = l->next;
 	}
+}
+
+void					vm_pc_move(t_vm *vm, t_process *p, t_instruction *ins, int flag)
+{
+	if (flag)
+		vm_put_instruction(vm, p, ins);
+	vm_put_pc_move(vm, p->pc, ins->size, ins);
+	p->pc = vm_pc(vm, p->pc + ins->size);
 }

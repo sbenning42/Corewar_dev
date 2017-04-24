@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 15:14:03 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/20 17:46:40 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/23 10:37:12 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,7 +197,7 @@ void			fill_args(t_instruction *ins, t_vm *vm, int pc, int label_size)
 
 	ins->nb_arg = 0;
 	ocp = ins->ocp;
-	while (ocp)
+	while (ocp && ins->nb_arg < 3)
 	{
 		ins->size += dispatch(ocp)\
 					 (ins->args + ins->nb_arg,\
@@ -240,12 +240,10 @@ void				vm_read_instruction(t_vm *vm, int pc, t_instruction *ins, unsigned char 
 	int				op_index;
 
 	ins->pc = pc;
-	//ins->op = opcode;
-	(void)opcode;
-	ins->op = bin_access(vm, pc);
+	ins->op = opcode;
 	pc = vm_pc(vm, pc + 1);
 	ins->size = 1;
-	op_index = get_op_index(ins->op);
+	op_index = get_op_index(opcode);
 	if (op_index < 0)
 		return ;
 	if (g_op[op_index].ocp)

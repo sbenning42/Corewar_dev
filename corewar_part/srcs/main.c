@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 10:45:42 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/20 10:12:44 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/24 08:49:27 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ void				vm_loop(t_vm *vm)
 	vm_put_players(vm);
 	while (42)
 	{
-		if (vm_finish(vm))
-			break ;
+		vm_check_step(vm);
 		if (vm_check_dump(vm))
 			break ;
-		vm_check_step(vm);
+		if (vm_finish(vm))
+			break ;
 		vm->config.cycle += 1;
 		vm->config.cycle_tot += 1;
 		if (ISBIT(vm->config.verb, VM_CYCLE_VERB))
