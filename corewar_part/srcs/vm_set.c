@@ -6,15 +6,15 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 15:32:18 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/20 16:01:06 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/24 10:44:16 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void		vm_set_timer(t_vm *vm, t_process *p)
+void				vm_set_timer(t_vm *vm, t_process *p)
 {
-	int		i;
+	int				i;
 	unsigned char	opcode;
 
 	opcode = bin_access(vm, p->pc);

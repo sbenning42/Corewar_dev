@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 14:36:06 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/24 09:10:34 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/24 11:24:18 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	vm_handler_opcode_live(t_vm *vm, t_process *p, t_instruction *ins)
 {
-	int			id;
+	int	id;
 
 	p->live = 0;
 	vm->config.nb_live += 1;
@@ -30,9 +30,9 @@ void	vm_handler_opcode_live(t_vm *vm, t_process *p, t_instruction *ins)
 
 void	vm_handler_opcode_add(t_vm *vm, t_process *p, t_instruction *ins)
 {
-	int			i_res;
-	int			i_op1;
-	int			i_op2;
+	int	i_res;
+	int	i_op1;
+	int	i_op2;
 
 	i_op1 = ins->args[0].value;
 	i_op2 = ins->args[1].value;
@@ -54,9 +54,9 @@ void	vm_handler_opcode_add(t_vm *vm, t_process *p, t_instruction *ins)
 
 void	vm_handler_opcode_sub(t_vm *vm, t_process *p, t_instruction *ins)
 {
-	int			i_res;
-	int			i_op1;
-	int			i_op2;
+	int	i_res;
+	int	i_op1;
+	int	i_op2;
 
 	i_op1 = ins->args[0].value;
 	i_op2 = ins->args[1].value;
@@ -91,9 +91,9 @@ void	vm_handler_opcode_aff(t_vm *vm, t_process *p, t_instruction *ins)
 	vm_pc_move(vm, p, ins, 1);
 }
 
-void		vm_handler_opcode_zjmp(t_vm *vm, t_process *p, t_instruction *ins)
+void	vm_handler_opcode_zjmp(t_vm *vm, t_process *p, t_instruction *ins)
 {
-	int				offset;
+	int	offset;
 
 	offset = ins->args[0].value;
 	offset %= vm->gconfig.idx_mod;

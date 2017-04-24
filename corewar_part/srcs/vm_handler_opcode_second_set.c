@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 14:55:51 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/24 09:13:13 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/24 11:38:23 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,33 @@
 
 void	vm_handler_opcode_and(t_vm *vm, t_process *p, t_instruction *ins)
 {
-	int				op1;
-	int				op2;
-	int				index;
-	int				err;
+	int	op[2];
+	int	index;
+	int	err;
 
 	index = ins->args[2].value;
-	op1 = access_arg_value(ins->args, vm, p, &err);
+	op[0] = access_arg_value(ins->args, vm, p, &err);
 	if (err)
 	{
 		vm_pc_move(vm, p, ins, 0);
 		return ;
 	}
-	op2 = access_arg_value(ins->args + 1, vm, p, &err);
+	op[1] = access_arg_value(ins->args + 1, vm, p, &err);
 	if (err)
 	{
 		vm_pc_move(vm, p, ins, 0);
 		return ;
 	}
-	p->registre[index] = op1 & op2;
-	if (!p->registre[index])
-		p->carry = 1;
-	else
-		p->carry = 0;
+	p->registre[index] = op[0] & op[1];
+	p->carry = (p->registre[index] ? 0 : 1);
 	vm_pc_move(vm, p, ins, 1);
 }
 
 void	vm_handler_opcode_or(t_vm *vm, t_process *p, t_instruction *ins)
 {
-	int				op1;
-	int				op2;
-	int				index;
-	int				err;
+	int	op[2];
+	int	index;
+	int	err;
 
 	index = ins->args[2].value;
 	if (check_reg_index(vm, index))
@@ -53,32 +48,28 @@ void	vm_handler_opcode_or(t_vm *vm, t_process *p, t_instruction *ins)
 		vm_pc_move(vm, p, ins, 0);
 		return ;
 	}
-	op1 = access_arg_value(ins->args, vm, p, &err);
+	op[0] = access_arg_value(ins->args, vm, p, &err);
 	if (err)
 	{
 		vm_pc_move(vm, p, ins, 0);
 		return ;
 	}
-	op2 = access_arg_value(ins->args + 1, vm, p, &err);
+	op[1] = access_arg_value(ins->args + 1, vm, p, &err);
 	if (err)
 	{
 		vm_pc_move(vm, p, ins, 0);
 		return ;
 	}
-	p->registre[index] = op1 | op2;
-	if (!p->registre[index])
-		p->carry = 1;
-	else
-		p->carry = 0;
+	p->registre[index] = op[0] | op[1];
+	p->carry = (p->registre[index] ? 0 : 1);
 	vm_pc_move(vm, p, ins, 1);
 }
 
 void	vm_handler_opcode_xor(t_vm *vm, t_process *p, t_instruction *ins)
 {
-	int				op1;
-	int				op2;
-	int				index;
-	int				err;
+	int	op[2];
+	int	index;
+	int	err;
 
 	index = ins->args[2].value;
 	if (check_reg_index(vm, index))
@@ -86,22 +77,19 @@ void	vm_handler_opcode_xor(t_vm *vm, t_process *p, t_instruction *ins)
 		vm_pc_move(vm, p, ins, 1);
 		return ;
 	}
-	op1 = access_arg_value(ins->args, vm, p, &err);
+	op[0] = access_arg_value(ins->args, vm, p, &err);
 	if (err)
 	{
 		vm_pc_move(vm, p, ins, 1);
 		return ;
 	}
-	op2 = access_arg_value(ins->args + 1, vm, p, &err);
+	op[1] = access_arg_value(ins->args + 1, vm, p, &err);
 	if (err)
 	{
 		vm_pc_move(vm, p, ins, 1);
 		return ;
 	}
-	p->registre[index] = ((op1 & ~op2) | (~op1 & op2));
-	if (!p->registre[index])
-		p->carry = 1;
-	else
-		p->carry = 0;
+	p->registre[index] = ((op[0] & ~op[1]) | (~op[0] & op[1]));
+	p->carry = (p->registre[index] ? 0 : 1);
 	vm_pc_move(vm, p, ins, 1);
 }

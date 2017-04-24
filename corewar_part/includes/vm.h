@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 10:51:41 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/24 09:59:47 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/24 10:52:20 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,18 @@
 **								define
 */
 
-
-# define VM_ERR_ARG             -1
-# define VM_AFF_ARG            	0
-# define VM_DUMP_ARG            1
-# define VM_STEP_ARG            2
-# define VM_PNUM_ARG            3
+# define VM_ERR_ARG				-1
+# define VM_AFF_ARG				0
+# define VM_DUMP_ARG			1
+# define VM_STEP_ARG			2
+# define VM_PNUM_ARG			3
 # define VM_VERB_ARG			4
-# define VM_NUMBER_ARG          5
-# define VM_CHAMP_ARG           6
+# define VM_NUMBER_ARG			5
+# define VM_CHAMP_ARG			6
 
-# define VM_EUSAGE              -1
-# define VM_EMALLOC             -2
+# define VM_EUSAGE				-1
+# define VM_EMALLOC				-2
+# define VM_ETOOMUCH			-3
 
 # define VM_LIVE_VERB			0x1
 # define VM_CYCLE_VERB			0x2
@@ -329,7 +329,18 @@ void							vm_handler_arg_champion(t_vm *vm, char *arg);
 */
 
 void							vm_new_player(t_vm *vm, char *name, long int id);
+
+/*
+********************************************************************************
+*/
+
+/*
+**								vm_player_id.c
+*/
+
+char							*get_color(void);
 int								is_available_id(t_vm *vm, long int id);
+long int						get_player_id(t_vm *vm, long int id);
 
 /*
 ********************************************************************************

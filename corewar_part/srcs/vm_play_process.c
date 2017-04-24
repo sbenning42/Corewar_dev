@@ -6,13 +6,14 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 13:20:49 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/24 10:07:26 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/24 11:40:20 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static void				vm_handler_opcode_error(t_vm *vm, t_process *process, t_instruction *ins)
+static void				vm_handler_opcode_error(t_vm *vm, t_process *process,\
+		t_instruction *ins)
 {
 	(void)ins;
 	process->pc = vm_pc(vm, process->pc + 1);
@@ -37,7 +38,8 @@ static t_vm_opcode_h	g_opcode_handler[] = {\
 	{0x10, vm_handler_opcode_aff}\
 };
 
-static void				(*dispatch(unsigned char op))(t_vm *, t_process *, t_instruction *ins)
+static void				(*dispatch(unsigned char op))(t_vm *, t_process *,\
+		t_instruction *ins)
 {
 	size_t				i;
 
@@ -77,7 +79,8 @@ void					vm_play_process(t_vm *vm)
 	}
 }
 
-void					vm_pc_move(t_vm *vm, t_process *p, t_instruction *ins, int flag)
+void					vm_pc_move(t_vm *vm, t_process *p, t_instruction *ins,\
+		int flag)
 {
 	if (flag)
 		vm_put_instruction(vm, p, ins);

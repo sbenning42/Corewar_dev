@@ -5,31 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/12 12:14:41 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/19 16:23:35 by sbenning         ###   ########.fr       */
+/*   Created: 2017/04/24 10:24:06 by sbenning          #+#    #+#             */
+/*   Updated: 2017/04/24 10:24:54 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 static char		*g_key[] = {\
-    "Affiche",\
-    "Dump",\
-    "Step Run",\
-    "Player Number",\
-    "Verbosity",\
-    "Numbers",\
-    "Champions"\
+	"Affiche",\
+	"Dump",\
+	"Step Run",\
+	"Player Number",\
+	"Verbosity",\
+	"Numbers",\
+	"Champions"\
 };
 
 static char		*g_regex[] = {\
-    "\\-+[affiche|a]",\
-    "\\-+[dump|d]",\
-    "\\-+[step|s]",\
-    "\\-+[number|n]",\
-    "\\-+[verbose|v]",\
-    "\\-?[0-9]+",\
-    ".*"\
+	"\\-+[affiche|a]",\
+	"\\-+[dump|d]",\
+	"\\-+[step|s]",\
+	"\\-+[number|n]",\
+	"\\-+[verbose|v]",\
+	"\\-?[0-9]+",\
+	".*"\
 };
 
 static void		vm_load_gconfig(t_vm *vm)
@@ -53,7 +53,7 @@ void			vm_setup(t_vm *vm)
 	vm->config.step = -1;
 	vm->config.last_live_id = -1;
 	vm_load_gconfig(vm);
-    set_args(g_key, g_regex, TABSIZE(g_regex));
+	set_args(g_key, g_regex, TABSIZE(g_regex));
 	vm_load_args(vm);
 	if (vm->config.nb_player < 1)
 		vm_fatal(VM_EUSAGE);
