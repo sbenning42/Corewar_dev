@@ -12,17 +12,17 @@
 
 #include "asm.h"
 
-t_token	*match_comment(t_parser *self, char **scan, void *data)
+t_token		*match_comment(t_parser *self, char **scan, void *data)
 {
 	return (match_char(self, scan, data, COMMENT_CHAR));
 }
 
-t_token	*match_command(t_parser *self, char **scan, void *data)
+t_token		*match_command(t_parser *self, char **scan, void *data)
 {
 	return (match_char(self, scan, data, COMMAND_CHAR));
 }
 
-t_token	*match_literal(t_parser *self, char **scan, void *data)
+t_token		*match_literal(t_parser *self, char **scan, void *data)
 {
 	return (match_char(self, scan, data, LITERAL_CHAR));
 }

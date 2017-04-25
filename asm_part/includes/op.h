@@ -13,7 +13,7 @@
 #ifndef OP_H
 # define OP_H
 
-# define COREWAR_EXEC_MAGIC		0xea83f3
+# define COREWAR_EXEC_MAGIC	0xea83f3
 
 # define NAME_CMD_STRING	".name"
 # define COMMENT_CMD_STRING	".comment"

@@ -1,50 +1,50 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   asm.h                                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/26 17:48:26 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/25 15:40:32 by sbenning         ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   asm.h											  :+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: sbenning <marvin@42.fr>					+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2017/03/26 17:48:26 by sbenning		  #+#	#+#			 */
+/*   Updated: 2017/04/25 15:40:32 by sbenning		 ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #ifndef ASM_H
 # define ASM_H
 
-# define ASM_OPT_CHARSET	"vVc"
-# define ASM_VERBOSE_OPT	0x1
+# define ASM_OPT_CHARSET		"vVc"
+# define ASM_VERBOSE_OPT		0x1
 # define ASM_VERY_VERBOSE_OPT	0x2
-# define ASM_COLOR_OPT		0x4
+# define ASM_COLOR_OPT			0x4
 
 /*
 ***#############################################################################
 */
 
-# define ASM_SOURCE_EXTENTION ".s"
-# define ASM_OBJECT_EXTENTION ".cor"
+# define ASM_SOURCE_EXTENTION	".s"
+# define ASM_OBJECT_EXTENTION	".cor"
 
 /*
 ***#############################################################################
 */
 
-# define MASK_0 (0xff000000)
-# define MASK_1 (0xff0000)
-# define MASK_2 (0xff00)
-# define MASK_3 (0xff)
+# define MASK_0					(0xff000000)
+# define MASK_1					(0xff0000)
+# define MASK_2					(0xff00)
+# define MASK_3					(0xff)
 
-# define SHORT_FIRST(X) ((X & MASK_2) >> 0x8)
-# define SHORT_SECOND(X) ((X & MASK_3) << 0x8)
-# define SHORT_BIG2LITTLE(X) (SHORT_FIRST(X) + SHORT_SECOND(X))
+# define SHORT_FIRST(X)			((X & MASK_2) >> 0x8)
+# define SHORT_SECOND(X)		((X & MASK_3) << 0x8)
+# define SHORT_BIG2LITTLE(X)	(SHORT_FIRST(X) + SHORT_SECOND(X))
 
-# define INT_FIRST(X) ((X & MASK_0) >> 0x18)
-# define INT_SECOND(X) ((X & MASK_1) >> 0x8)
-# define INT_THIRD(X) ((X & MASK_2) << 0x8)
-# define INT_FOURTH(X) ((X & MASK_3) << 0x18)
-# define INT_COUPLE_FIRST(X) (INT_FIRST(X) + INT_SECOND(X))
-# define INT_COUPLE_SECOND(X) (INT_THIRD(X) + INT_FOURTH(X))
-# define INT_BIG2LITTLE(X) (INT_COUPLE_FIRST(X) + INT_COUPLE_SECOND(X))
+# define INT_FIRST(X)			((X & MASK_0) >> 0x18)
+# define INT_SECOND(X)			((X & MASK_1) >> 0x8)
+# define INT_THIRD(X)			((X & MASK_2) << 0x8)
+# define INT_FOURTH(X)			((X & MASK_3) << 0x18)
+# define INT_COUPLE_FIRST(X)	(INT_FIRST(X) + INT_SECOND(X))
+# define INT_COUPLE_SECOND(X)	(INT_THIRD(X) + INT_FOURTH(X))
+# define INT_BIG2LITTLE(X)		(INT_COUPLE_FIRST(X) + INT_COUPLE_SECOND(X))
 
 /*
 ***#############################################################################
@@ -79,10 +79,10 @@
 # define ASM_ARGUMENT_P1	"`%s` (%03d, %03d)\n"
 # define ASM_ARGUMENT_FMT	ASM_ARGUMENT_P0 ASM_ARGUMENT_P1
 
-# define ASM_C_ARGUMENT_C0 "{gr|red}Bad argument count{eoc} "
-# define ASM_C_ARGUMENT_C1	"for instruction `{gr|cyan}%s{eoc}`\n"
+# define ASM_C_ARGUMENT_C0		"{gr|red}Bad argument count{eoc} "
+# define ASM_C_ARGUMENT_C1		"for instruction `{gr|cyan}%s{eoc}`\n"
 # define ASM_C_ARGUMENT_CFMT	ASM_C_ARGUMENT_C0 ASM_C_ARGUMENT_C1
-# define ASM_C_ARGUMENT_FMT	"Bad argument count for instruction `%s`\n"
+# define ASM_C_ARGUMENT_FMT		"Bad argument count for instruction `%s`\n"
 
 /*
 ***#############################################################################
@@ -376,12 +376,21 @@ int								resolve_label(t_payload *payload);
 int								encode_registre\
 									(t_instruction *ins, t_payload *payload,\
 									unsigned int i);
-int								encode_indirect\
-									(t_instruction *ins, t_payload *payload,\
-									unsigned int i);
 int								encode_direct_value\
 									(t_instruction *ins, t_payload *payload,\
 									unsigned int i);
+int								encode_indirect\
+									(t_instruction *ins, t_payload *payload,\
+									unsigned int i);
+
+/*
+***#############################################################################
+*/
+
+/*
+***								asm_encode_label.c
+*/
+
 int								encode_direct_label\
 									(t_instruction *ins, t_payload *payload,\
 									unsigned int i);
@@ -444,6 +453,17 @@ int								asm_payload(t_payload *payload, t_token **lst);
 */
 
 t_payload						asm_compile(int fd, char *file);
+
+/*
+***#############################################################################
+*/
+
+/*
+***								asm_parse.c
+*/
+
+int								asm_parse(int fd, char *file, \
+												t_token **token_list);
 
 /*
 ***#############################################################################

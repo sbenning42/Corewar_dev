@@ -14,24 +14,20 @@
 
 static void	asm_dump_token(t_token *token)
 {
-	ft_printf(token_fmt(),\
-			token->position.line, token->position.column,\
-			token->key, ((token->id == N_LABEL) ? "" : ((token->id == T_ID) ? "\t" : "\t\t")), token->value);
+	ft_printf(token_fmt(), token->position.line, token->position.column);
+	ft_printf(token->key);
+	if (token->id == N_LABEL)
+		ft_printf("");
+	else if (token->id == T_ID)
+		ft_printf("\t");
+	else
+		ft_printf("\t\t");
+	ft_printf(token->value);
 }
 
 void		asm_dump_token_lst(t_token *lst)
 {
-//	char	*fmt;
-
-/*	fmt = (PI_ISOPT(proginfo()->opt, ASM_COLOR_OPT)\
-			? "{gr}\n%s\n(%-3s, %3s) %20s ---->\t\t| %s |\t%s\n%s{eoc}\n\n"\
-			: "\n%s\n(%-3s, %3s) %20s ---->\t\t| %s |\t%s\n%s\n");
-	ft_printf(fmt,\
-			SEPLINE,\
-			"LI", "CO",\
-			"TYPE", "VALUE", "META",\
-			SEPLINE);
-*/	while (lst)
+	while (lst)
 	{
 		asm_dump_token(lst);
 		lst = lst->next;

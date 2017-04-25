@@ -12,9 +12,9 @@
 
 #include "asm.h"
 
-t_token		*match_directlab(t_parser *self, char **scan, void *data)
+t_token			*match_directlab(t_parser *self, char **scan, void *data)
 {
-	t_token	*token;
+	t_token		*token;
 
 	if (**scan != DIRECT_CHAR || *((*scan) + 1) != LABEL_CHAR)
 		return (NULL);
@@ -28,10 +28,10 @@ t_token		*match_directlab(t_parser *self, char **scan, void *data)
 	(void)data;
 }
 
-t_token		*match_registre(t_parser *self, char **scan, void *data)
+t_token			*match_registre(t_parser *self, char **scan, void *data)
 {
-	t_token	*token;
-	size_t	i;
+	t_token		*token;
+	size_t		i;
 
 	if (**scan != 'r')
 		return (NULL);
@@ -48,10 +48,10 @@ t_token		*match_registre(t_parser *self, char **scan, void *data)
 	(void)data;
 }
 
-t_token		*match_skip_literal(t_parser *self, char **scan, void *data)
+t_token			*match_skip_literal(t_parser *self, char **scan, void *data)
 {
-	t_token	*token;
-	size_t	i;
+	t_token		*token;
+	size_t		i;
 
 	i = 0;
 	while ((*scan)[i] && (*scan)[i] != '"')
@@ -69,9 +69,9 @@ t_token		*match_skip_literal(t_parser *self, char **scan, void *data)
 	(void)data;
 }
 
-t_token		*match_skip_empty(t_parser *self, char **scan, void *data)
+t_token			*match_skip_empty(t_parser *self, char **scan, void *data)
 {
-	t_token	*token;
+	t_token		*token;
 
 	while (**scan)
 		*scan += 1;
@@ -83,9 +83,9 @@ t_token		*match_skip_empty(t_parser *self, char **scan, void *data)
 	(void)data;
 }
 
-t_token		*match_empty(t_parser *self, char **scan, void *data)
+t_token			*match_empty(t_parser *self, char **scan, void *data)
 {
-	t_token	*token;
+	t_token		*token;
 
 	if (!**scan)
 	{
