@@ -365,6 +365,15 @@ void							vm_put_players(t_vm *vm);
 void							vm_new_process(t_vm *vm, int pc, \
 												long int id, char *color);
 void							vm_new_fprocess(t_vm *vm, int pc, t_process *p);
+/*
+********************************************************************************
+*/
+
+/*
+**								vm_put_player.cc
+*/
+
+void							vm_put_players(t_vm *vm);
 
 /*
 ********************************************************************************
