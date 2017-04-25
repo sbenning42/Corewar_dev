@@ -13,6 +13,7 @@
 NAME =			corewar
 
 SRC =           ft_file.c\
+				ft_file_action.c\
                 get_next_line.c\
 				main.c\
                 op.c\

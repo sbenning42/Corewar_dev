@@ -1,91 +1,53 @@
 #include "ft_file.h"
 
-t_file		*open_file(char *name, int mode)
+static int			read_binary_file_bis(t_file *f, size_t *size, int *ret, \
+												size_t *asize)
 {
-	t_file	*f;
+	size_t			offset;
+	unsigned char	binary[2048];
+	unsigned char	*tmp;
 
-	f = (t_file *)ft_memalloc(sizeof(t_file));
-	if (!f)
-		return (NULL);
-	f->name = ft_strdup(name);
-	if (!f->name)
+	offset = 2048 * 2;
+	while ((*ret = read(f->fd, binary, 2048)) > 0)
 	{
-		free(f);
-		return (NULL);
+		if (*size + *ret > *asize)
+		{
+			tmp = f->binary;
+			if (!(f->binary = ft_memalloc(sizeof(unsigned char) * \
+											(*asize + offset))))
+				return (-1);
+			*asize += offset;
+			if (*size)
+				ft_memcpy(f->binary, tmp, (*size) * sizeof(unsigned char));
+			if (tmp)
+				free(tmp);
+		}
+		ft_memcpy(f->binary + (*size), binary, *ret);
+		*size += *ret;
 	}
-	f->mode = mode;
-	f->fd = open(name, mode, 0755);
-	if (f->fd < 0)
-	{
-		free(f->name);
-		free(f);
-		return (NULL);
-	}
-	return (f);
-}
-
-void		close_file(t_file **f)
-{
-	if ((*f)->fd >= 0)
-		close((*f)->fd);
-	free((*f)->name);
-	if ((*f)->line)
-		free((*f)->line);
-	if ((*f)->binary)
-		free((*f)->binary);
-	free(*f);
-	*f = NULL;
-}
-
-int			read_file(t_file *f)
-{
-	int		status;
-
-	if (f->line)
-		ft_memdel((void **)&f->line);
-	status = get_next_line(f->fd, &f->line);
-	if (status > 0)
-		f->li += 1;
-	return (status);
+	return (0);
 }
 
 int					read_binary_file(t_file *f)
 {
 	size_t			size;
 	size_t			asize;
-	size_t			offset;
 	int				ret;
-	unsigned char	binary[2048];
-	unsigned char	*tmp;
 
-	asize = 0;
 	size = 0;
-	offset = 2048 * 2;
+	asize = 0;
+	ret = 0;
 	if (f->binary)
 		ft_memdel((void **)&f->binary);
-	while ((ret = read(f->fd, binary, 2048)) > 0)
-	{
-		if (size + ret > asize)
-		{
-			tmp = f->binary;
-			if (!(f->binary = ft_memalloc(sizeof(unsigned char) * (asize + offset))))
-				return (-1);
-			asize += offset;
-			if (size)
-				ft_memcpy(f->binary, tmp, size * sizeof(unsigned char));
-			if (tmp)
-				free(tmp);
-		}
-		ft_memcpy(f->binary + size, binary, ret);
-		size += ret;
-	}
+	if (read_binary_file_bis(f, &size, &ret, &asize) == -1)
+		return (-1);
 	f->binary_size = size;
 	return (0);
 }
 
-int		 ft_realloc(void **m, int dsize, int size)
+int					ft_realloc(void **m, int dsize, int size)
 {
-	void	*tmp;
+	void			*tmp;
 
 	tmp = *m;
 	if (!(*m = ft_memalloc(size)))

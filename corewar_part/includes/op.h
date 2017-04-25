@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 10:24:20 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/25 09:53:24 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/25 11:06:17 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@
 
 typedef char				t_arg_type;
 typedef struct s_op			t_op;
-typedef struct s_header_s		t_header_t;
+typedef struct header_s		header_t;
 
 struct						s_op
 {
@@ -157,7 +157,7 @@ struct						s_op
 	unsigned int			label_size;
 };
 
-struct						s_header_s
+struct						header_s
 {
 	unsigned int			magic;
 	char					prog_name[PROG_NAME_LENGTH + 1];
