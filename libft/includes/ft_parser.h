@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 08:22:30 by sbenning          #+#    #+#             */
-/*   Updated: 2017/03/30 10:56:13 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/25 09:23:48 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ void					reset_posotion(void);
 void					inc_li_position(int offset);
 void					inc_co_position(int offset);
 
-t_token					*new_token(int id, char *value, size_t size, t_position pos);
+t_token					*new_token(int id, char *value, \
+										size_t size, t_position pos);
 void					add_token(t_token **lst, t_token *token);
 void					pop_token(t_token **lst);
 void					del_token(t_token **lst);
@@ -68,7 +69,8 @@ void					del_token(t_token **lst);
 t_token					*match_and(t_parser *self, char **scan, void *data);
 t_token					*match_or(t_parser *self, char **scan, void *data);
 
-t_token					*match_char(t_parser *self, char **scan, void *data, char c);
+t_token					*match_char(t_parser *self, char **scan, \
+										void *data, char c);
 t_token					*match_id(t_parser *self, char **scan, void *data);
 t_token					*match_num(t_parser *self, char **scan, void *data);
 

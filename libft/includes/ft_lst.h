@@ -6,7 +6,7 @@
 /*   By: sbenning <sbenning@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/21 10:39:25 by sbenning          #+#    #+#             */
-/*   Updated: 2015/11/25 11:26:25 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/25 09:27:41 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@ struct				s_list
 t_list				*ft_lstnew(const void *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstdel_if\
-                        (t_list **alst, void *ref,\
-                         int (*fi)(void *, void *, size_t),\
-                         void (*del)(void *, size_t));
+void				ft_lstdel_if(t_list **alst, void *ref, \
+									int (*f)(void *, void *, size_t), \
+									void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *elem);
 void				ft_lstadd_back(t_list **alst, t_list *elem);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));

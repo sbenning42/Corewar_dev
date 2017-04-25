@@ -6,7 +6,7 @@
 /*   By: sbenning <sbenning@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 13:02:36 by sbenning          #+#    #+#             */
-/*   Updated: 2016/09/15 17:30:12 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/25 09:32:15 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		ft_initenv(void)
 	char	**tmp;
 	int		i;
 
-	tmp = environ;
+	tmp = g_environ;
 	i = 0;
 	while (tmp[i])
 		i++;
@@ -40,7 +40,8 @@ void		ft_initname(char *name)
 {
 	char	*f;
 
-	g_ft_program_name = ((f = ft_strrchr(name, '/')) ? f + 1 : name);
+	f = ft_strrchr(name, '/');
+	g_ft_program_name = (f ? f + 1 : name);
 }
 
 void		ft_init(char *name)

@@ -125,11 +125,10 @@ SRC =	ft_mem/ft_memset.c\
 		ft_printf/ft_printf_tools.c\
 		ft_printf/ft_printf_vfamily.c\
 		ft_parser/ft_parser.c\
+		ft_parser/ft_parser_match.c\
+		ft_parser/ft_parser_token.c\
 		ft_parser/parse_position.c\
-		ft_env/ft_env.c\
 		ft_exit/ft_exit.c\
-		ft_dyn/ft_dyn.c\
-		ft_dyn/ft_dynstd.c\
 		ft_global/ft_global.c\
 		ft_nfa/explicit_rpn.c\
 		ft_nfa/exp_rpn_handler.c\

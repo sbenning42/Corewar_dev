@@ -6,7 +6,7 @@
 /*   By: sbenning <sbenning@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 13:01:07 by sbenning          #+#    #+#             */
-/*   Updated: 2016/06/30 10:18:35 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/25 09:32:08 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "ft_str.h"
 # include "ft_exit.h"
 
-extern char		**environ;
+extern char		**g_environ;
 extern char		**g_ft_environ;
 extern char		*g_ft_program_name;
 
