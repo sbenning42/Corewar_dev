@@ -9,8 +9,7 @@ void			fill_args(t_instruction *ins, t_vm *vm, int pc, int label_size)
 	while (ocp && ins->nb_arg < 3)
 	{
 		ins->size += dispatch_access(ocp)\
-					 (ins->args + ins->nb_arg,\
-					  vm, &pc, label_size);
+						(ins->args + ins->nb_arg, vm, &pc, label_size);
 		ins->nb_arg += 1;
 		ocp <<= 0x2;
 	}

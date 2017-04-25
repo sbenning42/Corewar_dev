@@ -6,21 +6,21 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 08:45:42 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/20 17:42:22 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/25 13:07:11 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-# define ABS(X) (X < 0 ? -X : X)
-
-void				vm_put_pc_move(t_vm *vm, int pc_start, int offset, t_instruction *ins)
+void				vm_put_pc_move(t_vm *vm, int pc_start, int offset, \
+											t_instruction *ins)
 {
 	int				i;
 
 	if (!ISBIT(vm->config.verb, VM_PC_VERB))
 		return ;
-	ft_printf("ADV %d (0x%04x -> 0x%04x) ", offset, pc_start, vm_pc(vm, pc_start + offset));
+	ft_printf("ADV %d (0x%04x -> 0x%04x) ", \
+						offset, pc_start, vm_pc(vm, pc_start + offset));
 	//ft_printf("ADV %d (0x%04x -> 0x%04x [%hhx]) ", offset, pc_start, vm_pc(vm, pc_start + offset), bin_access(vm, pc_start + offset));
 	i = -1;
 	while (++i < ins->size)

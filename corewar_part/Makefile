@@ -37,6 +37,7 @@ SRC =           ft_file.c\
 				vm_handler_opcode_st.c\
 				vm_handler_opcode_second_set.c\
 				vm_handler_opcode_third_set.c\
+				vm_handler_opcode_tool.c\
 				vm_handler_opcode_fourth_set.c\
 				vm_is.c\
 				vm_load_args.c\

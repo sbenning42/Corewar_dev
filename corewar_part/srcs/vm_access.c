@@ -6,13 +6,13 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 15:14:03 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/25 10:10:35 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/25 12:27:58 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int					(*dispatch_access(unsigned char ocp))(t_insarg_i *, t_vm *, int *, int)
+t_disp_fct			dispatch_access(unsigned char ocp)
 {
 	ocp &= 0xc0;
 	if (ocp == 0x40)
@@ -52,7 +52,8 @@ unsigned char		make_ocp(t_op op)
 	return (ocp);
 }
 
-void				vm_read_instruction(t_vm *vm, int pc, t_instruction *ins, unsigned char opcode)
+void				vm_read_instruction(t_vm *vm, int pc, \
+								t_instruction *ins, unsigned char opcode)
 {
 	int				op_index;
 
