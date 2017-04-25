@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/24 10:24:06 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/24 10:24:54 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/25 13:23:16 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static char		*g_key[] = {\
 	"Affiche",\
+	"Color",\
 	"Dump",\
 	"Step Run",\
 	"Player Number",\
@@ -24,6 +25,7 @@ static char		*g_key[] = {\
 
 static char		*g_regex[] = {\
 	"\\-+[affiche|a]",\
+	"\\-+[color|c]",\
 	"\\-+[dump|d]",\
 	"\\-+[step|s]",\
 	"\\-+[number|n]",\

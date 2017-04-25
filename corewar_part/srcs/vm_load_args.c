@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/24 10:28:14 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/24 10:28:18 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/25 13:16:46 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static void			vm_handler_arg_error(t_vm *vm, char *arg)
 static t_vm_args_h	g_args_handler[] = {\
 	{VM_ERR_ARG, vm_handler_arg_error},\
 	{VM_AFF_ARG, vm_handler_arg_affiche},\
+	{VM_COL_ARG, vm_handler_arg_color},\
 	{VM_DUMP_ARG, vm_handler_arg_dump},\
 	{VM_STEP_ARG, vm_handler_arg_step},\
 	{VM_PNUM_ARG, vm_handler_arg_pnum},\

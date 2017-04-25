@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/24 10:43:16 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/24 10:43:19 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/25 13:21:39 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,10 @@ void		vm_handler_arg_verbose(t_vm *vm, char *arg)
 void		vm_handler_arg_champion(t_vm *vm, char *arg)
 {
 	vm_new_player(vm, arg, -1);
+}
+
+void		vm_handler_arg_color(t_vm *vm, char *arg)
+{
+	vm->col = 1;
+	(void)arg;
 }

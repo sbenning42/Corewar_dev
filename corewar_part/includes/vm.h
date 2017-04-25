@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>					+#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2017/04/12 10:51:41 by sbenning		  #+#	#+#			 */
-/*   Updated: 2017/04/25 13:04:25 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/25 13:23:35 by qstemper         ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@
 
 # define VM_ERR_ARG				-1
 # define VM_AFF_ARG				0
-# define VM_DUMP_ARG			1
-# define VM_STEP_ARG			2
-# define VM_PNUM_ARG			3
-# define VM_VERB_ARG			4
-# define VM_NUMBER_ARG			5
-# define VM_CHAMP_ARG			6
+# define VM_COL_ARG				1
+# define VM_DUMP_ARG			2
+# define VM_STEP_ARG			3
+# define VM_PNUM_ARG			4
+# define VM_VERB_ARG			5
+# define VM_NUMBER_ARG			6
+# define VM_CHAMP_ARG			7
 
 # define VM_EUSAGE				-1
 # define VM_EMALLOC				-2
@@ -37,7 +38,7 @@
 # define VM_PC_VERB				0x10
 
 # define ISBIT(X, Y)			(X & Y)
-# define						ABS(X) (X < 0 ? -X : X)
+# define ABS(X)					(X < 0 ? -X : X)
 
 # define VM_1U					"Usage: ./corewar [-d N -s N -v N | -b] "
 # define VM_2U					"[-a] [-n N] <champion1.cor> [[-n N] <...>]\n"
@@ -165,6 +166,7 @@ struct							s_vm
 	char						*color[MEM_SIZE];
 	t_list						*player;
 	t_list						*process;
+	int							col;
 };
 
 struct							s_vmerror
@@ -317,6 +319,7 @@ void							vm_load_args(t_vm *vm);
 */
 
 void							vm_handler_arg_affiche(t_vm *vm, char *arg);
+void							vm_handler_arg_color(t_vm *vm, char *arg);
 void							vm_handler_arg_dump(t_vm *vm, char *arg);
 void							vm_handler_arg_step(t_vm *vm, char *arg);
 void							vm_handler_arg_pnum(t_vm *vm, char *arg);
