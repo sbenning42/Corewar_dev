@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/26 17:48:26 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/03 13:34:14 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/25 15:40:32 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,22 +105,25 @@
 # define N_SEP_ARG			14
 # define N_ARGUMENT			15
 # define N_DIRECT			16
-# define N_DIR_ARG			17
-# define N_DIR_LAB			18
+# define N_INDIRECT			17
+# define N_DIR_ARG			18
+# define N_DIR_LAB			19
+# define N_IND_LAB			20
 
-# define T_EMPTY			19
-# define T_COMMENT			20
-# define T_SKIP_EMPTY		21
-# define T_COMMAND			22
-# define T_ID				23
-# define T_LITERAL			24
-# define T_SKIP_LITERAL		25
-# define T_LABEL			26
-# define T_SEPARATOR		27
-# define T_REGISTRE			28
-# define T_INDIRECT			29
-# define T_DIRECT			30
-# define T_DIR_LAB			31
+# define T_EMPTY			21
+# define T_COMMENT			22
+# define T_SKIP_EMPTY		23
+# define T_COMMAND			24
+# define T_ID				25
+# define T_LITERAL			26
+# define T_SKIP_LITERAL		27
+# define T_LABEL			28
+# define T_ILABEL			29
+# define T_SEPARATOR		30
+# define T_REGISTRE			31
+# define T_INDIRECT			32
+# define T_DIRECT			33
+# define T_DIR_LAB			34
 
 /*
 ***#############################################################################
@@ -380,6 +383,9 @@ int								encode_direct_value\
 									(t_instruction *ins, t_payload *payload,\
 									unsigned int i);
 int								encode_direct_label\
+									(t_instruction *ins, t_payload *payload,\
+									unsigned int i);
+int								encode_indirect_label\
 									(t_instruction *ins, t_payload *payload,\
 									unsigned int i);
 
