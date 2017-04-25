@@ -25,7 +25,8 @@ int				nfa_match(t_nfa *nfa, char *scan)
 	if (!(tokens = nfa_get_start_tokens(nfa)))
 		return (0);
 	max_match = 0;
-	max_match = nfa_eval_tokens_step(nfa, &tokens, scan, 0, &max_match);
+	nfa->size = 0;
+	max_match = nfa_eval_tokens_step(nfa, &tokens, scan, &max_match);
 	ft_lstdel(&tokens, nfa_l_del);
 	return (max_match);
 }

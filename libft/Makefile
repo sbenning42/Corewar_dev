@@ -136,6 +136,7 @@ SRC =	ft_mem/ft_memset.c\
 		ft_nfa/exp_rpn_prior.c\
 		ft_nfa/exp_rpn_stack.c\
 		ft_nfa/ft_gen_lex.c\
+		ft_nfa/ft_lexem.c\
 		ft_nfa/ft_gen_lex_scan.c\
 		ft_nfa/ft_gen_lex_tool.c\
 		ft_nfa/ft_lexer.c\
@@ -150,6 +151,7 @@ SRC =	ft_mem/ft_memset.c\
 		ft_nfa/nfa_eval_rec.c\
 		ft_nfa/nfa_kleen_preset.c\
 		ft_nfa/nfa_new.c\
+		ft_nfa/nfa_new_trans.c\
 		ft_nfa/nfa_preset.c\
 		ft_nfa/nfa_set.c\
 		ft_nfa/nfa_trans.c\
@@ -186,5 +188,3 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-

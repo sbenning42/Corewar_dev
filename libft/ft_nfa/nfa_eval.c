@@ -4,7 +4,7 @@ int				nfa_search_state(t_list *tokens, t_state *state)
 {
 	return ((tokens\
 				&& ((state == *(t_state **)tokens->content)\
-					|| nfa_search_state(tokens->next, state))));
+				|| nfa_search_state(tokens->next, state))));
 }
 
 void			nfa_union_tokens(t_list **l1, t_list *l2)
@@ -35,7 +35,8 @@ void			nfa_eval_tokens(t_list **tokens, char *scan)
 	nfa_eval_tokens(tokens, scan + 1);
 }
 
-int				nfa_eval_tokens_step(t_nfa *nfa, t_list **tokens, char *scan, int size, int *max)
+int				nfa_eval_tokens_step(t_nfa *nfa, t_list **tokens, \
+						char *scan, int *max)
 {
 	if (!*scan)
 		return (*max);
@@ -44,6 +45,7 @@ int				nfa_eval_tokens_step(t_nfa *nfa, t_list **tokens, char *scan, int size, i
 	if (!*tokens)
 		return (*max);
 	if (nfa_is_terminal(nfa, *tokens))
-		*max = size + 1;
-	return (nfa_eval_tokens_step(nfa, tokens, scan + 1, size + 1, max));
+		*max = nfa->size + 1;
+	nfa->size += 1;
+	return (nfa_eval_tokens_step(nfa, tokens, scan + 1, max));
 }

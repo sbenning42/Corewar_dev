@@ -93,6 +93,7 @@ struct                      s_nfa
     t_state                 *initial;
     t_state                 *terminal;
     int                     nb_state;
+	int						size;
 };
 
 struct                      s_re_entry
@@ -106,12 +107,17 @@ struct                      s_re_entry
 */
 
 /*
-**                          nfa_new.c
+**                          nfa_new_trans.c
 */
 
 t_list                      *nfa_new_trans_entry\
-                                (char start, char end, t_state *state);
+								(char start, char end, t_state *state);
 t_list                      *nfa_new_eps_trans_entry(t_state *state);
+
+/*
+**                          nfa_new.c
+*/
+
 t_state                     *nfa_new_state\
                                 (int final, t_list *trans, t_list *eps_trans);
 t_nfa                       *nfa_new(void);
@@ -167,9 +173,8 @@ void                        nfa_dump_trans(t_list *l, int color);
 */
 
 void                        nfa_eval_tokens(t_list **tokens, char *scan);
-int                         nfa_eval_tokens_step\
-                                (t_nfa *nfa, t_list **tokens,\
-                                 char *scan, int size, int *max);
+int                         nfa_eval_tokens_step(t_nfa *nfa, t_list **tokens,\
+	                                 char *scan, int *max);
 void						nfa_union_tokens(t_list **l1, t_list *l2);
 
 /*
