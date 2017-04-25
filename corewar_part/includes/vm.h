@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   vm.h                                               :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/12 10:51:41 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/24 10:52:20 by sbenning         ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   vm.h											   :+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: sbenning <marvin@42.fr>					+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2017/04/12 10:51:41 by sbenning		  #+#	#+#			 */
+/*   Updated: 2017/04/25 10:58:03 by qstemper         ###   ########.fr       */
+/*																			*/
 /* ************************************************************************** */
 
 #ifndef VM_H
@@ -91,10 +91,10 @@
 **								include
 */
 
-# include						"libft.h"
-# include						"ft_lexer.h"
-# include						"ft_file.h"
-# include						"op.h"
+# include "libft.h"
+# include "ft_lexer.h"
+# include "ft_file.h"
+# include "op.h"
 
 /*
 ********************************************************************************
@@ -117,7 +117,7 @@ typedef union u_swap			t_swap;
 typedef enum e_e_insarg			t_e_insarg;
 typedef struct s_insarg_i		t_insarg_i;
 typedef struct s_instruction	t_instruction;
-
+typedef int						(*t_disp_fct)(t_insarg_i *, t_vm *, int *, int);
 
 /*
 ********************************************************************************
@@ -129,40 +129,40 @@ typedef struct s_instruction	t_instruction;
 
 struct							s_vm_gconf
 {
-    unsigned int				max_player;
-    int						mem_size;
-    int						champ_max_size;
-    int						reg_number;
-    int						reg_size;
-   	int						idx_mod;
-    int						cycle_to_die;
-    int						cycle_delta;
-    int						max_checks;
-    long int				nbr_live;
+	unsigned int				max_player;
+	int							mem_size;
+	int							champ_max_size;
+	int							reg_number;
+	int							reg_size;
+	int							idx_mod;
+	int							cycle_to_die;
+	int							cycle_delta;
+	int							max_checks;
+	long int					nbr_live;
 };
 
 struct							s_vm_conf
 {
-    long int					cycle;
-    long int					cycle_tot;
+	long int					cycle;
+	long int					cycle_tot;
 	unsigned int				nb_player;
 	int							nb_check;
 	long int					nb_live;
-    int							aff;
-    int							dump;
-    int							step;
-    int							verb;
+	int							aff;
+	int							dump;
+	int							step;
+	int							verb;
 	int							last_live_id;
 };
 
-struct                          s_vm
+struct							s_vm
 {
-    t_vm_gconf					gconfig;
-    t_vm_conf					config;
-    unsigned char				memory[MEM_SIZE];
-    char						*color[MEM_SIZE];
-    t_list						*player;
-    t_list						*process;
+	t_vm_gconf					gconfig;
+	t_vm_conf					config;
+	unsigned char				memory[MEM_SIZE];
+	char						*color[MEM_SIZE];
+	t_list						*player;
+	t_list						*process;
 };
 
 struct							s_vmerror
@@ -220,27 +220,27 @@ struct							s_vm_opcode_h
 	void						(*func)(t_vm *, t_process *, t_instruction *);
 };
 
-struct                          s_player
+struct							s_player
 {
-    long int					id;
-    header_t					header;
-    t_file                      *file;
+	long int					id;
+	t_header_t					header;
+	t_file						*file;
 	unsigned char				binary[CHAMP_MAX_SIZE];
 	size_t						binary_size;
-    int							pc;
-    char						*color;
+	int							pc;
+	char						*color;
 };
 
-struct                          s_process
+struct							s_process
 {
 	int							player_id;
 	int							id;
-    int							pc;
-    int                         registre[REG_NUMBER + 1];
-    unsigned int                carry;
-    int							timer;
-    long int					live;
-    int							dead;
+	int							pc;
+	int							registre[REG_NUMBER + 1];
+	unsigned int				carry;
+	int							timer;
+	long int					live;
+	int							dead;
 	unsigned char				opcode;
 //	t_instruction				ins;
 	char						*color;
@@ -328,7 +328,8 @@ void							vm_handler_arg_champion(t_vm *vm, char *arg);
 **								vm_new_player.c
 */
 
-void							vm_new_player(t_vm *vm, char *name, long int id);
+void							vm_new_player(t_vm *vm, char *name, \
+												long int id);
 
 /*
 ********************************************************************************
@@ -350,11 +351,13 @@ long int						get_player_id(t_vm *vm, long int id);
 **								vm_load_process.c
 */
 
-void							vm_put_pc_move(t_vm *vm, int pc_start, int offset, t_instruction *ins);
+void							vm_put_pc_move(t_vm *vm, int pc_start, \
+												int offset, t_instruction *ins);
 void							vm_load_process(t_vm *vm);
 void							vm_put_memory(t_vm *vm);
 void							vm_put_players(t_vm *vm);
-void							vm_new_process(t_vm *vm, int pc, long int id, char *color);
+void							vm_new_process(t_vm *vm, int pc, \
+												long int id, char *color);
 void							vm_new_fprocess(t_vm *vm, int pc, t_process *p);
 
 /*
@@ -366,7 +369,8 @@ void							vm_new_fprocess(t_vm *vm, int pc, t_process *p);
 */
 
 void							vm_play_process(t_vm *vm);
-void							vm_pc_move(t_vm *vm, t_process *p, t_instruction *ins, int flag);
+void							vm_pc_move(t_vm *vm, t_process *p, \
+												t_instruction *ins, int flag);
 
 /*
 ********************************************************************************
@@ -376,11 +380,16 @@ void							vm_pc_move(t_vm *vm, t_process *p, t_instruction *ins, int flag);
 **								vm_handler_opcode_first_set.c
 */
 
-void							vm_handler_opcode_live(t_vm *vm, t_process *p, t_instruction *ins);
-void							vm_handler_opcode_add(t_vm *vm, t_process *p, t_instruction *ins);
-void							vm_handler_opcode_sub(t_vm *vm, t_process *p, t_instruction *ins);
-void							vm_handler_opcode_aff(t_vm *vm, t_process *p, t_instruction *ins);
-void							vm_handler_opcode_zjmp(t_vm *vm, t_process *p, t_instruction *ins);
+void							vm_handler_opcode_live(t_vm *vm, t_process *p, \
+													t_instruction *ins);
+void							vm_handler_opcode_add(t_vm *vm, t_process *p, \
+													t_instruction *ins);
+void							vm_handler_opcode_sub(t_vm *vm, t_process *p, \
+													t_instruction *ins);
+void							vm_handler_opcode_aff(t_vm *vm, t_process *p, \
+													t_instruction *ins);
+void							vm_handler_opcode_zjmp(t_vm *vm, t_process *p, \
+													t_instruction *ins);
 
 /*
 ********************************************************************************
@@ -390,9 +399,12 @@ void							vm_handler_opcode_zjmp(t_vm *vm, t_process *p, t_instruction *ins);
 **								vm_handler_opcode_second_set.c
 */
 
-void							vm_handler_opcode_and(t_vm *vm, t_process *p, t_instruction *ins);
-void							vm_handler_opcode_or(t_vm *vm, t_process *p, t_instruction *ins);
-void							vm_handler_opcode_xor(t_vm *vm, t_process *p, t_instruction *ins);
+void							vm_handler_opcode_and(t_vm *vm, t_process *p, \
+													t_instruction *ins);
+void							vm_handler_opcode_or(t_vm *vm, t_process *p, \
+													t_instruction *ins);
+void							vm_handler_opcode_xor(t_vm *vm, t_process *p, \
+													t_instruction *ins);
 
 /*
 ********************************************************************************
@@ -402,11 +414,16 @@ void							vm_handler_opcode_xor(t_vm *vm, t_process *p, t_instruction *ins);
 **								vm_handler_opcode_third_set.c
 */
 
-void							vm_handler_opcode_ld(t_vm *vm, t_process *p, t_instruction *ins);
-void							vm_handler_opcode_st(t_vm *vm, t_process *p, t_instruction *ins);
-void							vm_handler_opcode_ldi(t_vm *vm, t_process *p, t_instruction *ins);
-void							vm_handler_opcode_sti(t_vm *vm, t_process *p, t_instruction *ins);
-void							vm_handler_opcode_fork(t_vm *vm, t_process *p, t_instruction *ins);
+void							vm_handler_opcode_ld(t_vm *vm, t_process *p, \
+													t_instruction *ins);
+void							vm_handler_opcode_st(t_vm *vm, t_process *p, \
+													t_instruction *ins);
+void							vm_handler_opcode_ldi(t_vm *vm, t_process *p, \
+													t_instruction *ins);
+void							vm_handler_opcode_sti(t_vm *vm, t_process *p, \
+													t_instruction *ins);
+void							vm_handler_opcode_fork(t_vm *vm, t_process *p, \
+													t_instruction *ins);
 
 /*
 ********************************************************************************
@@ -416,9 +433,12 @@ void							vm_handler_opcode_fork(t_vm *vm, t_process *p, t_instruction *ins);
 **								vm_handler_opcode_fourth_set.c
 */
 
-void							vm_handler_opcode_lld(t_vm *vm, t_process *p, t_instruction *ins);
-void							vm_handler_opcode_lldi(t_vm *vm, t_process *p, t_instruction *ins);
-void							vm_handler_opcode_lfork(t_vm *vm, t_process *p, t_instruction *ins);
+void							vm_handler_opcode_lld(t_vm *vm, t_process *p, \
+													t_instruction *ins);
+void							vm_handler_opcode_lldi(t_vm *vm, t_process *p, \
+													t_instruction *ins);
+void							vm_handler_opcode_lfork(t_vm *vm, t_process *p,\
+													t_instruction *ins);
 
 /*
 ********************************************************************************
@@ -428,9 +448,10 @@ void							vm_handler_opcode_lfork(t_vm *vm, t_process *p, t_instruction *ins);
 **								vm_handler_opcode_st.c
 */
 
-
-void							vm_handler_opcode_st_reg(t_vm *vm, t_process *p, t_instruction *ins, int value);
-void							vm_handler_opcode_st_ind(t_vm *vm, t_process *p, t_instruction *ins, int value);
+void							vm_handler_opcode_st_reg(t_vm *vm, \
+							t_process *p, t_instruction *ins, int value);
+void							vm_handler_opcode_st_ind(t_vm *vm, \
+							t_process *p, t_instruction *ins, int value);
 
 /*
 ********************************************************************************
@@ -508,7 +529,8 @@ void							vm_declare_win(t_vm *vm);
 **								vm_put_instruction.c
 */
 
-void							vm_put_instruction(t_vm *vm, t_process *p, t_instruction *ins);
+void							vm_put_instruction(t_vm *vm, t_process *p, \
+													t_instruction *ins);
 
 /*
 ********************************************************************************
@@ -518,8 +540,9 @@ void							vm_put_instruction(t_vm *vm, t_process *p, t_instruction *ins);
 **								vm_access.c
 */
 
-int								(*dispatch_access(unsigned char ocp))(t_insarg_i *, t_vm *, int *, int);
-void							vm_read_instruction(t_vm *vm, int pc, t_instruction *ins, unsigned char opcode);
+t_disp_fct						dispatch_access(unsigned char ocp);
+void							vm_read_instruction(t_vm *vm, int pc, \
+									t_instruction *ins, unsigned char opcode);
 int								check_reg_index(t_vm *vm, int i);
 
 /*
@@ -583,11 +606,16 @@ int								read_char(t_vm *vm, int *pc);
 **								vm_access_fill.c
 */
 
-void							fill_args(t_instruction *ins, t_vm *vm, int pc, int label_size);
-int								fill_reg(t_insarg_i *arg, t_vm *vm, int *pc, int label_size);
-int								fill_ind(t_insarg_i *arg, t_vm *vm, int *pc, int label_size);
-int								fill_dir(t_insarg_i *arg, t_vm *vm, int *pc, int label_size);
-int								fill_null(t_insarg_i *arg, t_vm *vm, int *pc, int label_size);
+void							fill_args(t_instruction *ins, t_vm *vm, int pc,\
+												int label_size);
+int								fill_reg(t_insarg_i *arg, t_vm *vm, int *pc, \
+												int label_size);
+int								fill_ind(t_insarg_i *arg, t_vm *vm, int *pc, \
+												int label_size);
+int								fill_dir(t_insarg_i *arg, t_vm *vm, int *pc, \
+												int label_size);
+int								fill_null(t_insarg_i *arg, t_vm *vm, int *pc, \
+												int label_size);
 
 /*
 ********************************************************************************
@@ -597,10 +625,13 @@ int								fill_null(t_insarg_i *arg, t_vm *vm, int *pc, int label_size);
 **								vm_access_arg.c
 */
 
-int								access_reg_arg(t_insarg_i *arg, t_process *p, int *err);
+int								access_reg_arg(t_insarg_i *arg, t_process *p, \
+												int *err);
 int								access_dir_arg(t_insarg_i *arg);
-int								access_ind_arg(t_insarg_i *arg, t_vm *vm, t_process *p);
-int								access_arg_value(t_insarg_i *arg, t_vm *vm, t_process *p, int *err);
+int								access_ind_arg(t_insarg_i *arg, t_vm *vm, \
+												t_process *p);
+int								access_arg_value(t_insarg_i *arg, t_vm *vm, \
+												t_process *p, int *err);
 
 /*
 ********************************************************************************

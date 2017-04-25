@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 10:24:20 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/19 13:15:58 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/25 09:53:24 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,17 +79,26 @@
 # define OP_AND_I			5
 # define ASM_AND_ID			"and"
 # define ASM_AND_DESC		"et (and  r1, r2, r3   r1&r2 -> r3"
-# define ASM_AND_ARGS		T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG, T_NOP
+# define ASM_AND_ARGS_1		T_REG | T_DIR | T_IND
+# define ASM_AND_ARGS_2		T_REG | T_DIR | T_IND
+# define ASM_AND_ARGS_3		T_REG, T_NOP
+# define ASM_AND_ARGS		ASM_AND_ARGS_1, ASM_AND_ARGS_2, ASM_AND_ARGS_3
 
 # define OP_OR_I			6
 # define ASM_OR_ID			"or"
 # define ASM_OR_DESC		"ou  (or   r1, r2, r3   r1 | r2 -> r3"
-# define ASM_OR_ARGS		T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG, T_NOP
+# define ASM_OR_ARGS_1		T_REG | T_DIR | T_IND
+# define ASM_OR_ARGS_2		T_REG | T_DIR | T_IND
+# define ASM_OR_ARGS_3		T_REG, T_NOP
+# define ASM_OR_ARGS		ASM_AND_ARGS_1, ASM_AND_ARGS_2, ASM_AND_ARGS_3
 
 # define OP_XOR_I			7
 # define ASM_XOR_ID			"xor"
 # define ASM_XOR_DESC		"ou (xor  r1, r2, r3   r1^r2 -> r3"
-# define ASM_XOR_ARGS		T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG, T_NOP
+# define ASM_XOR_ARGS_1		T_REG | T_DIR | T_IND
+# define ASM_XOR_ARGS_2		T_REG | T_DIR | T_IND
+# define ASM_XOR_ARGS_3		T_REG, T_NOP
+# define ASM_XOR_ARGS		ASM_AND_ARGS_1, ASM_AND_ARGS_2, ASM_AND_ARGS_3
 
 # define OP_ZJMP_I			8
 # define ASM_ZJMP_ID		"zjmp"
@@ -133,7 +142,7 @@
 
 typedef char				t_arg_type;
 typedef struct s_op			t_op;
-typedef struct header_s		header_t;
+typedef struct s_header_s		t_header_t;
 
 struct						s_op
 {
@@ -148,7 +157,7 @@ struct						s_op
 	unsigned int			label_size;
 };
 
-struct						header_s
+struct						s_header_s
 {
 	unsigned int			magic;
 	char					prog_name[PROG_NAME_LENGTH + 1];

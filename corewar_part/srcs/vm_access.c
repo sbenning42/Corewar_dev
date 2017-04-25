@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 15:14:03 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/23 10:37:12 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/25 10:10:35 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void				vm_read_instruction(t_vm *vm, int pc, t_instruction *ins, unsigned char 
 	fill_args(ins, vm, pc, g_op[op_index].label_size);
 }
 
-int				check_reg_index(t_vm *vm, int i)
+int					check_reg_index(t_vm *vm, int i)
 {
 	if (i < 1 || i > vm->gconfig.reg_number)
 		return (-1);
