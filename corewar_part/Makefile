@@ -48,6 +48,7 @@ SRC =           ft_file.c\
 				vm_play_process.c\
                 vm_put_instruction.c\
                 vm_put_memory.c\
+                vm_put_player.c\
                 vm_set.c\
 				vm_setup.c
 
