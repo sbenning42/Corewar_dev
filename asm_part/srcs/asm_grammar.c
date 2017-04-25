@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 16:16:25 by sbenning          #+#    #+#             */
-/*   Updated: 2017/03/30 18:46:52 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/25 15:09:28 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,12 @@ t_parser			g_asm_grammar[] = {\
 	{N_INSTRUCTION,		"INSTRUCTION",		FALSE,	NULL,			match_and,				{T_ID, N_SUITE_ARG},						2},\
 	{N_SUITE_ARG,		"ARGUMENTS",		FALSE,	NULL,			match_or,				{N_SEP_ARG, N_ARGUMENT},					2},\
 	{N_SEP_ARG,			"ARG SEPARATOR",	FALSE,	smart_delete,	match_and,				{N_ARGUMENT, T_SEPARATOR, N_SUITE_ARG},		3},\
-	{N_ARGUMENT,		"ARGUMENT",			FALSE,	get_mask,		match_or,				{T_REGISTRE, T_INDIRECT, N_DIRECT},			3},\
+	{N_ARGUMENT,		"ARGUMENT",			FALSE,	get_mask,		match_or,				{T_REGISTRE, N_INDIRECT, N_DIRECT},			3},\
 	{N_DIRECT,			"DIRECT",			FALSE,	NULL,			match_or,				{N_DIR_LAB, N_DIR_ARG},						2},\
+	{N_INDIRECT,		"NINDIRECT",		FALSE,	NULL,			match_or,				{N_IND_LAB, T_INDIRECT},					2},\
 	{N_DIR_ARG,			"DIRECT VALUE",		FALSE,	refactor,		match_and,				{T_DIRECT, T_INDIRECT},						2},\
 	{N_DIR_LAB,			"DIRECT LABEL",		FALSE,	refactor,		match_and,				{T_DIR_LAB, T_ID},							2},\
+	{N_IND_LAB,			"INDIRECT LABEL",	FALSE,	refactor,		match_and,				{T_ILABEL, T_ID},							2},\
 	{T_EMPTY,			"EMPTY",			TRUE,	NULL,			match_empty,			{},	0},\
 	{T_COMMENT,			"CHAR COMMENT",		TRUE,	NULL,			match_comment,			{},	0},\
 	{T_SKIP_EMPTY,		"SKIP EMPTY",		TRUE,	NULL,			match_skip_empty,		{},	0},\
@@ -68,6 +70,7 @@ t_parser			g_asm_grammar[] = {\
 	{T_LITERAL,			"CHAR LITERAL",		TRUE,	NULL,			match_literal,			{},	0},\
 	{T_SKIP_LITERAL,	"SKIP LITERAL",		TRUE,	NULL,			match_skip_literal,		{},	0},\
 	{T_LABEL,			"CHAR LABEL",		FALSE,	NULL,			match_label,			{},	0},\
+	{T_ILABEL,			"CHAR ILABEL",		TRUE,	NULL,			match_label,			{},	0},\
 	{T_SEPARATOR,		"CHAR SEPARATOR",	TRUE,	NULL,			match_separator,		{},	0},\
 	{T_REGISTRE,		"REGISTRE",			TRUE,	NULL,			match_registre,			{},	0},\
 	{T_INDIRECT,		"INDIRECT",			TRUE,	NULL,			match_num,				{},	0},\

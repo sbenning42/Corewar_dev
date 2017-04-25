@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 09:35:09 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/03 13:42:58 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/25 15:33:43 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ unsigned int	get_arg_size(t_token *lst, size_t label_size)
 {
 	if (lst->id == T_REGISTRE)
 		return (1);
-	if (lst->id == T_INDIRECT)
+	if (lst->id == T_INDIRECT || lst->id == N_IND_LAB)
 		return (2);
 	if (lst->id == N_DIR_ARG || lst->id == N_DIR_LAB)
 		return (label_size);
@@ -47,5 +47,6 @@ int				bad_argument_count(t_token **lst)
 					(*lst)->id == T_REGISTRE\
 					|| (*lst)->id == T_INDIRECT\
 					|| (*lst)->id == N_DIR_LAB\
-					|| (*lst)->id == N_DIR_ARG)));
+					|| (*lst)->id == N_DIR_ARG\
+					|| (*lst)->id == N_IND_LAB)));
 }

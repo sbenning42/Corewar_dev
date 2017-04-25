@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 10:20:49 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/03 13:29:32 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/25 15:40:08 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,19 @@ int		encode_direct_label(t_instruction *ins, t_payload *payload, unsigned int i)
 	if (ins->op->label_size == 2)
 		return (encode_direct_slabel(ins, payload, i, label));
 	return (encode_direct_ilabel(ins, payload, i, label));
+	(void)payload;
+}
+
+int		encode_indirect_label(t_instruction *ins, t_payload *payload, unsigned int i)
+{
+	t_label	*label;
+
+	if (!(label = get_label(payload->labels, ins->str_arguments[i] + 1)))
+	{
+		label_error(ins->str_arguments[i]);
+		return (-1);
+	}
+	return (encode_direct_slabel(ins, payload, i, label));
 	(void)payload;
 }
 

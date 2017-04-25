@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 18:26:25 by sbenning          #+#    #+#             */
-/*   Updated: 2017/03/30 18:35:15 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/25 15:33:43 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ int					get_mask(t_parser *self, t_token **lst)
 		*(int *)((*lst)->meta) = T_DIR;
 	else if ((*lst)->id == N_DIR_LAB)
 		*(int *)((*lst)->meta) = T_DIR;
+	else if ((*lst)->id == N_IND_LAB)
+		*(int *)((*lst)->meta) = T_IND;
 	return (0);
 	(void)self;
 }

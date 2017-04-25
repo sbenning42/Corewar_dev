@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 09:46:03 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/03 13:43:30 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/25 15:40:08 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int					dispatch_argument(t_instruction *ins,\
 		return (encode_direct_value(ins, payload, i));
 	else if (ins->arguments_id[i] == N_DIR_LAB)
 		return (encode_direct_label(ins, payload, i));
+	else if (ins->arguments_id[i] == N_IND_LAB)
+		return (encode_indirect_label(ins, payload, i));
 	else
 		ft_printf("UNKNOW. . . [%d]\n", ins->arguments_id[i]);
 	return (-1);
