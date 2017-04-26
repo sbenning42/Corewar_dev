@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 16:16:25 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/26 08:29:33 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/26 11:45:09 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,18 +79,19 @@ t_parser			g_asm_grammar[] = {\
 		{T_DIR_LAB, T_ID}, 2}, \
 	{N_IND_LAB, "INDIRECT LABEL", FALSE, refactor, match_and, \
 		{T_ILABEL, T_ID}, 2}, \
-	{T_EMPTY, "EMPTY", TRUE, NULL, match_empty, {}, 0}, \
-	{T_COMMENT, "CHAR COMMENT", TRUE, NULL, match_comment, {}, 0}, \
-	{T_SKIP_EMPTY, "SKIP EMPTY", TRUE, NULL, match_skip_empty, {}, 0}, \
-	{T_COMMAND, "CHAR COMMAND", TRUE, NULL, match_command, {}, 0}, \
-	{T_ID, "IDENTIFIER", TRUE, get_op, match_id, {}, 0}, \
-	{T_LITERAL, "CHAR LITERAL", TRUE, NULL, match_literal, {}, 0}, \
-	{T_SKIP_LITERAL, "SKIP LITERAL", TRUE, NULL, match_skip_literal, {}, 0}, \
-	{T_LABEL, "CHAR LABEL", FALSE, NULL, match_label, {}, 0}, \
-	{T_ILABEL, "CHAR ILABEL", TRUE, NULL, match_label, {}, 0}, \
-	{T_SEPARATOR, "CHAR SEPARATOR", TRUE, NULL, match_separator, {}, 0}, \
-	{T_REGISTRE, "REGISTRE", TRUE, NULL, match_registre, {}, 0}, \
-	{T_INDIRECT, "INDIRECT", TRUE, NULL, match_num, {}, 0}, \
-	{T_DIRECT, "CHAR DIRECT", TRUE, NULL, match_direct, {}, 0}, \
-	{T_DIR_LAB, "CHAR DIR LABEL", TRUE, NULL, match_directlab, {}, 0}\
+	{T_EMPTY, "EMPTY", TRUE, NULL, match_empty, NORMINET, 0}, \
+	{T_COMMENT, "CHAR COMMENT", TRUE, NULL, match_comment, NORMINET, 0}, \
+	{T_SKIP_EMPTY, "SKIP EMPTY", TRUE, NULL, match_skip_empty, NORMINET, 0}, \
+	{T_COMMAND, "CHAR COMMAND", TRUE, NULL, match_command, NORMINET, 0}, \
+	{T_ID, "IDENTIFIER", TRUE, get_op, match_id, NORMINET, 0}, \
+	{T_LITERAL, "CHAR LITERAL", TRUE, NULL, match_literal, NORMINET, 0}, \
+	{T_SKIP_LITERAL, "SKIP LITERAL", TRUE, NULL, match_skip_literal, \
+		NORMINET, 0}, \
+	{T_LABEL, "CHAR LABEL", FALSE, NULL, match_label, NORMINET, 0}, \
+	{T_ILABEL, "CHAR ILABEL", TRUE, NULL, match_label, NORMINET, 0}, \
+	{T_SEPARATOR, "CHAR SEPARATOR", TRUE, NULL, match_separator, NORMINET, 0}, \
+	{T_REGISTRE, "REGISTRE", TRUE, NULL, match_registre, NORMINET, 0}, \
+	{T_INDIRECT, "INDIRECT", TRUE, NULL, match_num, NORMINET, 0}, \
+	{T_DIRECT, "CHAR DIRECT", TRUE, NULL, match_direct, NORMINET, 0}, \
+	{T_DIR_LAB, "CHAR DIR LABEL", TRUE, NULL, match_directlab, NORMINET, 0}\
 };

@@ -108,6 +108,7 @@ lre :
 	make re -C $(LIBFT_DIR)
 
 clean : lclean
+	rm -rf $(OBJ_DIR)
 	rm -f $(ABS_OBJ)
 
 fclean : clean lfclean
