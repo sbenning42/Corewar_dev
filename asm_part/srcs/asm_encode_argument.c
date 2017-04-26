@@ -6,13 +6,11 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 10:20:49 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/25 15:40:08 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/26 07:45:42 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-
-
 
 int					encode_direct_value(t_instruction *ins, \
 											t_payload *payload, unsigned int i)
@@ -32,13 +30,9 @@ int					encode_direct_value(t_instruction *ins, \
 		free(tmp);
 	}
 	if (size == 2)
-	{
 		sval = SHORT_BIG2LITTLE((short)ft_atoi(ins->str_arguments[i] + 1));
-	}
 	else if (size == 4)
-	{
 		ival = INT_BIG2LITTLE((int)ft_atoi(ins->str_arguments[i] + 1));
-	}
 	ft_memcpy(ins->arg_payload + ins->arg_size, \
 							(size == 2 ? (void *)&sval : (void *)&ival), size);
 	ins->arg_size += size;

@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>					+#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2017/04/12 10:51:41 by sbenning		  #+#	#+#			 */
-/*   Updated: 2017/04/25 13:23:35 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/26 07:43:24 by qstemper         ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@
 # define INT_COUPLE_SECOND(X)	(INT_THIRD(X) + INT_FOURTH(X))
 
 # define INT_LITTLE2BIG(X)		(INT_COUPLE_FIRST(X) + INT_COUPLE_SECOND(X))
-
 
 /*
 ********************************************************************************
@@ -447,7 +446,6 @@ void							vm_handler_opcode_fork(t_vm *vm, t_process *p, \
 /*
 **								vm_handler_opcode_tool.c
 */
-
 
 int								vm_h_opc_tool(t_vm *vm, t_process *p, \
 												t_instruction *ins, int err);
