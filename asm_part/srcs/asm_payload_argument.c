@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 09:35:09 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/25 15:33:43 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/26 14:17:27 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ int				asm_handle_ocp(t_instruction *ins,\
 	if (ins->op->ocp)
 	{
 		ins->ocp <<= 0x2;
-		ins->ocp |= *((int *)((*lst)->meta));
+		if (*((int *)((*lst)->meta)) != T_IND)
+			ins->ocp |= *((int *)((*lst)->meta));
+		else
+			ins->ocp |= 0x3;
 		ins->arguments_type[i] = *((int *)((*lst)->meta));
 	}
 	ins->arguments_id[i] = (*lst)->id;

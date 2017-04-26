@@ -1,1 +1,2 @@
-Writing output to ../corewar-exemple/champions/error.cor
+Bad argument 1 type 'DIRECT VALUE' for instruction `st` (004, 007)
+./resources/bin/asm: ../corewar-exemple/champions/error.s: Can't compile

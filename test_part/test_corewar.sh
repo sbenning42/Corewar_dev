@@ -6,7 +6,7 @@
 #    By: sbenning <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/26 12:28:27 by sbenning          #+#    #+#              #
-#    Updated: 2017/04/26 12:54:32 by sbenning         ###   ########.fr        #
+#    Updated: 2017/04/26 14:22:45 by sbenning         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,3 +22,6 @@ cd ressources
 
 ./asm ../corewar-exemple/champions/sti_ldi.s
 ./corewar -c -v 31 -s 25 -d 50 ../corewar-exemple/champions/sti_ldi.cor
+
+cd ..
+rm -rf ressources
