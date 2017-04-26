@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 10:45:42 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/25 14:49:14 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/26 16:26:23 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void			write_binary(t_payload payload, char *source_file)
 	free(tmp);
 	if ((fd = open(object_file, O_WRONLY | O_CREAT, 0755)) < 0)
 		exit(1);
-	ft_printf("Writing output to %s\n", object_file);
+	ft_printf("Writing output program to %s\n", object_file);
 	write(fd, payload.payload, payload.size);
 	close(fd);
 	free(object_file);

@@ -1,0 +1,2 @@
+Bad argument 2 type 'INDIRECT LABEL' for instruction `add` (005, 012)
+./resources/bin/asm: ../corewar-exemple/champions/error2.s: Can't compile
