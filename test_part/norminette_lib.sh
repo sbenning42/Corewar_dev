@@ -6,8 +6,8 @@
 #    By: sbenning <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/26 12:09:14 by sbenning          #+#    #+#              #
-#    Updated: 2017/04/26 12:09:49 by sbenning         ###   ########.fr        #
+#    Updated: 2017/04/26 12:19:24 by sbenning         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-norminette libft/*/*.[ch]
+norminette ../libft/*/*.[ch]

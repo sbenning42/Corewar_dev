@@ -8,8 +8,8 @@ NC='\033[0m' # No Color
 DIR="../corewar-exemple/champions"
 
 # Check if asm is in current dir and put it where it belong
-if [ -f ../asm ]
-then cp ../asm ./resources/bin/
+if [ -f ../../asm ]
+then cp ../../asm ./resources/bin/
 fi
 
 # Create directory
