@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/26 12:07:51 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/26 12:08:06 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/26 13:50:28 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -660,6 +660,20 @@ int								access_arg_value(t_insarg_i *arg, t_vm *vm, \
 /*
 ********************************************************************************
 */
+
+/*
+**								vm_access_arg_p2.c
+*/
+
+int								access_ind_arg_woidx(t_insarg_i *arg,\
+											t_vm *vm, t_process *p);
+int								access_arg_value_woidx(t_insarg_i *arg,\
+											t_vm *vm, t_process *p, int *err);
+
+/*
+********************************************************************************
+*/
+
 
 char							*vm_get_player_name(t_vm *vm, int id);
 

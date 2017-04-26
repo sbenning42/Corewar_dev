@@ -18,6 +18,7 @@ SRC =           ft_file.c\
 				main.c\
                 op.c\
 				vm_access_arg.c\
+				vm_access_arg_p2.c\
 				vm_access_bin.c\
 				vm_access.c\
 				vm_access_endian.c\

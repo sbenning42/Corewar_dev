@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/29 10:06:04 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/03 09:37:21 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/26 13:36:47 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,18 @@
 
 static void	asm_dump_token(t_token *token)
 {
-	ft_printf(token_fmt(), token->position.line, token->position.column);
-	ft_printf(token->key);
+	char	*pad;
+
 	if (token->id == N_LABEL)
-		ft_printf("");
+		pad = "";
 	else if (token->id == T_ID)
-		ft_printf("\t");
+		pad = "\t";
 	else
-		ft_printf("\t\t");
-	ft_printf(token->value);
+		pad = "\t\t";
+	ft_printf(token_fmt(),\
+			token->position.line,\
+			token->position.column,\
+			token->key, pad, token->value);
 }
 
 void		asm_dump_token_lst(t_token *lst)
