@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 15:14:03 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/25 12:27:58 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/26 14:39:20 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ unsigned char		make_ocp(t_op op)
 	ocp = 0;
 	while (i < op.nb_arg)
 	{
-		ocp |= (op.args_type[i] << 0x6) >> (0x2 * i);
+		if (op.args_type[i] != T_IND)
+			ocp |= (op.args_type[i] << 0x6) >> (0x2 * i);
+		else
+			ocp |= 0x3;
 		++i;
 	}
 	return (ocp);
