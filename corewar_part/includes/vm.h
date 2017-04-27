@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/26 12:07:51 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/26 14:23:38 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/27 13:09:09 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define ISBIT(X, Y)			(X & Y)
 # define ABS(X)					(X < 0 ? -X : X)
 
-# define VM_1U					"Usage: ./corewar [-d N -s N -v N | -b] "
+# define VM_1U					"Usage: ./corewar [-d N -s N -v N] "
 # define VM_2U					"[-a] [-n N] <champion1.cor> [[-n N] <...>]\n"
 # define VM_3U					"\t-a\t: Prints output from \"aff\" "
 # define VM_4U					"(Default is to hide it)\n"
@@ -675,5 +675,6 @@ int								access_arg_value_woidx(t_insarg_i *arg,\
 */
 
 char							*vm_get_player_name(t_vm *vm, int id);
+void							write_col(t_vm *vm, t_process *p, int pc);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/26 12:02:03 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/26 12:02:05 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/27 12:56:54 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,13 +136,11 @@
 # include "get_next_line.h"
 # include "libft.h"
 # include "op.h"
-# include <errno.h>
 
 /*
 ***#############################################################################
 */
 
-typedef struct s_op				t_op;
 typedef struct s_payload		t_payload;
 typedef struct s_label			t_label;
 typedef struct s_instruction	t_instruction;
@@ -150,7 +148,7 @@ typedef struct s_instruction	t_instruction;
 /*
 ***#############################################################################
 */
-
+/*
 struct							s_op
 {
 	char						*id;
@@ -163,7 +161,7 @@ struct							s_op
 	unsigned int				ocp;
 	unsigned int				label_size;
 };
-
+*/
 struct							s_payload
 {
 	t_label						*labels;

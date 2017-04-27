@@ -70,6 +70,6 @@ live29: live %42
 live30: live %42
 
 fork:
-	fork %:live0
+	fork %:entry
 	add r2, r2, r2
 	zjmp %300

@@ -55,6 +55,8 @@ HEADER =		includes
 
 DEPEND =		asm.h
 
+RESSOURCES =	../ressources/
+
 ABS_DEPEND =	$(addprefix $(HEADER)/, $(DEPEND))
 
 LIBFT =			ft
@@ -78,7 +80,7 @@ $(NAME) : $(ABS_OBJ)
 
 $(COR_OBJ) : $(COR_SRC) $(ABS_DEPEND)
 	@mkdir -p obj
-	$(CC) $(FLAG) -g -o $@ -c $< -I$(HEADER) -I$(LIBFT_HEADER)
+	$(CC) $(FLAG) -g -o $@ -c $< -I$(HEADER) -I$(RESSOURCES) -I$(LIBFT_HEADER)
 
 $(ABS_OBJ_LIBFT) :
 	make -C $(LIBFT_DIR)

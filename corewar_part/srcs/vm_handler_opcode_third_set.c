@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 14:56:52 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/25 12:57:10 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/27 13:11:16 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ void	vm_handler_opcode_sti(t_vm *vm, t_process *p, t_instruction *ins)
 		return ;
 	pc = vm_pc(vm, p->pc + ((addr + offset) % vm->gconfig.idx_mod));
 	write_int(vm, &pc, p->value);
+	write_col(vm, p, pc);
 	vm_pc_move(vm, p, ins, 1);
 }
 

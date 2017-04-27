@@ -4,6 +4,6 @@
 load:
 
 ldi :load, %1, r2
-sti r2, :store, %42
+sti r2, %:store, %42
 
 store:

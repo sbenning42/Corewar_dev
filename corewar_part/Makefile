@@ -51,7 +51,8 @@ SRC =           ft_file.c\
                 vm_put_memory.c\
                 vm_put_player.c\
                 vm_set.c\
-				vm_setup.c
+				vm_setup.c\
+                vm_write_color.c
 
 SRC_DIR =		srcs/
 OBJ_DIR =		obj/
@@ -67,6 +68,8 @@ ABS_OBJ =		$(addprefix $(OBJ_DIR), $(OBJ))
 HEADER =		includes
 
 DEPEND =	    vm.h
+
+RESSOURCES =	../ressources/
 
 ABS_DEPEND =	$(addprefix $(HEADER)/, $(DEPEND))
 
@@ -91,7 +94,7 @@ $(NAME) :  $(ABS_OBJ)
 
 $(COR_OBJ) : $(COR_SRC) $(ABS_DEPEND)
 	@mkdir -p obj
-	$(CC) $(FLAG) -g -o $@ -c $< -I$(HEADER) -I$(LIBFT_HEADER)
+	$(CC) $(FLAG) -g -o $@ -c $< -I$(HEADER) -I$(RESSOURCES) -I$(LIBFT_HEADER)
 
 $(OBJ_DIR) :
 	mkdir $(OBJ_DIR)
