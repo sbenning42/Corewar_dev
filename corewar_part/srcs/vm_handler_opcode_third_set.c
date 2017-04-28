@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 14:56:52 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/27 13:11:16 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/28 14:19:25 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void	vm_handler_opcode_ld(t_vm *vm, t_process *p, t_instruction *ins)
 	value = access_arg_value(ins->args, vm, p, &err);
 	if (err)
 	{
-		vm_put_pc_move(vm, p->pc, ins->size, ins);
-		p->pc = vm_pc(vm, p->pc + ins->size);
 		vm_pc_move(vm, p, ins, 0);
 		return ;
 	}
@@ -108,7 +106,7 @@ void	vm_handler_opcode_fork(t_vm *vm, t_process *p, t_instruction *ins)
 	int				offset;
 	int				pc;
 
-	offset = ins->args[0].value % vm->gconfig.mem_size;
+	offset = ins->args[0].value % vm->gconfig.idx_mod;
 	pc = vm_pc(vm, p->pc + offset);
 	vm_new_fprocess(vm, pc, p);
 	vm_pc_move(vm, p, ins, 1);

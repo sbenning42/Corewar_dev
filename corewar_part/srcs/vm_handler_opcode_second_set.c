@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 14:55:51 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/24 11:38:23 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/28 12:50:01 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	vm_handler_opcode_xor(t_vm *vm, t_process *p, t_instruction *ins)
 		vm_pc_move(vm, p, ins, 1);
 		return ;
 	}
-	p->registre[index] = ((op[0] & ~op[1]) | (~op[0] & op[1]));
+	p->registre[index] = op[0] ^ op[1];
 	p->carry = (p->registre[index] ? 0 : 1);
 	vm_pc_move(vm, p, ins, 1);
 }

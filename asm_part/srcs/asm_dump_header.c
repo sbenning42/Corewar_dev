@@ -6,13 +6,13 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/29 11:44:44 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/03 13:44:07 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/28 14:52:45 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void		asm_dump_header(header_t h)
+void		asm_dump_header(t_header_t h)
 {
 	if (PI_ISOPT(proginfo()->opt, ASM_COLOR_OPT))
 		ft_printf("{gr}%s{eoc}\n\n", SEPLINE);

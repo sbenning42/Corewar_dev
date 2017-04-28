@@ -6,23 +6,23 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/29 09:03:12 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/26 12:43:18 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/28 14:52:30 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static int			make_payload(t_payload *payload, header_t header)
+static int			make_payload(t_payload *payload, t_header_t header)
 {
 	size_t			cursor;
 	t_instruction	*drive;
 
 	header.prog_size = INT_BIG2LITTLE(payload->size);
-	payload->size += sizeof(header_t);
+	payload->size += sizeof(t_header_t);
 	if (!(payload->payload = ft_memalloc(payload->size)))
 		return (-1);
-	ft_memcpy(payload->payload, &header, sizeof(header_t));
-	cursor = sizeof(header_t);
+	ft_memcpy(payload->payload, &header, sizeof(t_header_t));
+	cursor = sizeof(t_header_t);
 	drive = payload->instruction;
 	while (drive)
 	{
@@ -41,7 +41,7 @@ static int			make_payload(t_payload *payload, header_t header)
 	return (0);
 }
 
-static int			asm_compile_bis(header_t *header, t_token **lst)
+static int			asm_compile_bis(t_header_t *header, t_token **lst)
 {
 	if (asm_header(header, lst))
 	{
@@ -54,7 +54,7 @@ static int			asm_compile_bis(header_t *header, t_token **lst)
 t_payload			asm_compile(int fd, char *file)
 {
 	t_token			*lst;
-	header_t		header;
+	t_header_t		header;
 	t_payload		payload;
 
 	lst = NULL;

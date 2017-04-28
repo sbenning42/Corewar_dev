@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/24 10:30:39 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/24 10:31:19 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/28 14:37:56 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void				vm_new_fprocess(t_vm *vm, int pc, t_process *p)
 {
 	t_list			*l;
 	t_process		process;
-	int				i;
 
 	ft_bzero(&process, sizeof(t_process));
 	process.id = get_id();
@@ -50,9 +49,7 @@ void				vm_new_fprocess(t_vm *vm, int pc, t_process *p)
 	process.carry = p->carry;
 	process.live = p->live;
 	process.registre[0] = 0;
-	i = 0;
-	while (++i < 17)
-		process.registre[i] = p->registre[i];
+	ft_memcpy(process.registre, p->registre, sizeof(int) * (REG_NUMBER + 1));
 	vm_set_timer(vm, &process);
 	if (!(l = ft_lstnew(&process, sizeof(t_process))))
 		vm_fatal(VM_EMALLOC);

@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/26 12:04:49 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/26 12:04:49 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/28 14:04:57 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int			access_reg_arg(t_insarg_i *arg, t_process *p, int *err)
 {
-	if (arg->value < 1 || arg->value > 16)
+	if (arg->value < 1 || arg->value > REG_NUMBER)
 	{
 		*err = 1;
 		return (0);

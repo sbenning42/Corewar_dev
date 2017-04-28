@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/26 12:02:03 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/28 11:35:33 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/28 14:50:57 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -294,7 +294,7 @@ void							argument_count_error(char *id);
 ***								asm_dump_header.c
 */
 
-void							dump_header(header_t header);
+void							dump_header(t_header_t header);
 
 /*
 ***#############################################################################
@@ -339,7 +339,7 @@ int								bad_argument_count(t_token **lst);
 */
 
 void							asm_dump_token_lst(t_token *lst);
-void							asm_dump_header(header_t h);
+void							asm_dump_header(t_header_t h);
 void							asm_dump_payload(t_payload *payload);
 
 /*
@@ -419,7 +419,7 @@ void							del_instruction(t_instruction **lst);
 ***								asm_header.c
 */
 
-int								asm_header(header_t *h, t_token **lst);
+int								asm_header(t_header_t *h, t_token **lst);
 
 /*
 ***#############################################################################

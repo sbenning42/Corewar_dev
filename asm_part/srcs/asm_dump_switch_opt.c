@@ -6,13 +6,13 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:03:13 by sbenning          #+#    #+#             */
-/*   Updated: 2017/03/31 14:36:49 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/28 14:53:28 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void			dump_header(header_t header)
+void			dump_header(t_header_t header)
 {
 	if (PI_ISOPT(proginfo()->opt, ASM_VERBOSE_OPT))
 		asm_dump_header(header);

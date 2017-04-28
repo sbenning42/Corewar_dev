@@ -10,16 +10,22 @@
 #*                                                                            *#
 #* ************************************************************************** *#
 
+LIBFT_NAME =	libft.a
 ASM_NAME =		asm
 COREWAR_NAME =	corewar
 
+LIBFT_DIR =		libft/
 ASM_DIR =		asm_part/
 COREWAR_DIR =	corewar_part/
 
+LIBFT =			$(addprefix $(LIBFT_DIR), $(LIBFT_NAME))
 ASM =			$(addprefix $(ASM_DIR), $(ASM_NAME))
 COREWAR =		$(addprefix $(COREWAR_DIR), $(COREWAR_NAME))
 
-all: $(ASM) $(COREWAR)
+all: $(LIBFT) $(ASM) $(COREWAR)
+
+$(LIBFT):
+	make -C $(LIBFT_DIR)
 
 $(ASM):
 	make -C $(ASM_DIR)
@@ -40,3 +46,5 @@ fclean :
 	rm -f $(COREWAR_NAME)
 
 re : fclean all
+
+libft : $(LIBFT)

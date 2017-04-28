@@ -6,39 +6,11 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 16:16:25 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/26 11:45:09 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/28 14:54:37 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-
-/*
-***
-***	<line>			::=	<content> <empty> ;
-***	<content>		::=	<significatif> <comment> | <significatif> | <comment> ;
-***	<comment>		::=	'#' ... <T_empty> ;
-***	<significatif>	::=	<command> | <expression> ;
-***	<command>		::=	<command_id> <litteral> ;
-***	<command_id>	::=	'.'<T_id> ;
-***	<litteral>		::=	'"' ... '"' ;
-***	<expression>	::=	<label> <instruction> | <label> | <instruction> ;
-***	<label>			::=	<T_id>':' ;
-***	<instruction>	::=	<T_id> <arguments> ;
-*** <arguments>		::=	<arg_separator> | <argument> ;
-***	<arg_separator>	::=	<argument> ',' <arguments> ;
-***	<argument>		::=	<registre> | <indirect> | <direct> ;
-***	<registre>		::= 'r'<T_uint> ;
-***	<indirect>		::=	<T_int> ;
-*** <direct>		::= '%'<direct_arg> ;
-***	<direct_arg>	::=	<direct_label> | <T_int> ;
-*** <direct_label>	::=	':'<T_id> ;
-***
-***	T_empty			::= "" ;
-***	T_uint			::= [0-9]+ ;
-***	T_int			::= -?[0-9]+ ;
-***	T_id			::= [a-z][a-z0-9_]* ;
-***
-*/
 
 t_parser			g_asm_grammar[] = {\
 	{N_DUMB, "DUMB", FALSE, NULL, match_or, {N_LINE, T_EMPTY}, 2}, \

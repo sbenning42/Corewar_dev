@@ -4,6 +4,4 @@
 load:
 
 ld :load, r2
-st r2, :store
-
-store:
+st r2, 42
