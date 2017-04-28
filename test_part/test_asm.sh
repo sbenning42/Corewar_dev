@@ -6,9 +6,11 @@
 #    By: sbenning <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/26 12:21:59 by sbenning          #+#    #+#              #
-#    Updated: 2017/04/26 14:34:56 by qstemper         ###   ########.fr        #
+#    Updated: 2017/04/28 11:44:11 by sbenning         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-cd script
+cd ..
+make
+cd test_part/script
 sh test_asm.sh
