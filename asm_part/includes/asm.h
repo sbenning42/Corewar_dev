@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/26 12:02:03 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/27 12:56:54 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/28 11:35:33 by sbenning         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,20 +148,7 @@ typedef struct s_instruction	t_instruction;
 /*
 ***#############################################################################
 */
-/*
-struct							s_op
-{
-	char						*id;
-	unsigned int				opcode;
-	unsigned int				nb_arg;
-	int							args_type[MAX_ARGS_NUMBER];
-	char						*desc;
-	unsigned int				cycle;
-	unsigned int				carry;
-	unsigned int				ocp;
-	unsigned int				label_size;
-};
-*/
+
 struct							s_payload
 {
 	t_label						*labels;
