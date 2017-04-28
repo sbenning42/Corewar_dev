@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/26 12:07:51 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/27 13:09:09 by sbenning         ###   ########.fr       */
+/*   Updated: 2017/04/28 15:21:42 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,7 +226,7 @@ struct							s_vm_opcode_h
 struct							s_player
 {
 	long int					id;
-	header_t					header;
+	t_header_t					header;
 	t_file						*file;
 	unsigned char				binary[CHAMP_MAX_SIZE];
 	size_t						binary_size;
