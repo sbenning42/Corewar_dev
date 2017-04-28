@@ -6,7 +6,7 @@
 /*   By: sbenning <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 15:23:00 by sbenning          #+#    #+#             */
-/*   Updated: 2017/04/25 11:04:55 by qstemper         ###   ########.fr       */
+/*   Updated: 2017/04/28 14:58:50 by qstemper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void		vm_load_player_file(t_player *p)
 	size_t		hsize;
 	size_t		size;
 
-	hsize = sizeof(header_t);
+	hsize = sizeof(t_header_t);
 	size = hsize;
 	ft_memcpy(&p->header, p->file->binary, size);
 	p->header.magic = INT_LITTLE2BIG(p->header.magic);
@@ -31,7 +31,7 @@ static int		vm_check_champ_size(t_vm *vm, t_player *player)
 {
 	size_t		hsize;
 
-	hsize = sizeof(header_t);
+	hsize = sizeof(t_header_t);
 	if ((player->file->binary_size < hsize)\
 			|| (player->file->binary_size > hsize + vm->gconfig.champ_max_size))
 	{
