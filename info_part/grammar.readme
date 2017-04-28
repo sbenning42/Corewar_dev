@@ -1,0 +1,24 @@
+Assembleur Corewar Grammar:
+
+<line>				::=		<content> <T_empty> ;
+<content>			::=		<significatif> <comment> | <significatif> | <comment> ;
+<comment>			::=		'#' ... <T_empty> ;
+<significatif>		::=		<command> | <expression> ;
+<command>			::=		<command_id> <litteral> ;
+<command_id>		::=		'.'<T_id> ;
+<litteral>			::=		'"' ... '"' ;
+<expression>		::=		<label> <instruction> | <label> | <instruction> ;
+<label>				::=		<T_id>':' ;
+<instruction>		::=		<T_id> <arguments> ;
+<arguments>			::=		<arg_separator> | <argument> ;
+<arg_separator>		::=		<argument> ',' <arguments> ;
+<argument>			::=		<registre> | <indirect> | <direct> ;
+<registre>			::= 	'r'<T_uint> ;
+<direct>			::= 	'%'<indirect> ;
+<indirect>			::=		<T_int> | <indirect_label> ;
+<indirect_label>	::=		':'<T_id> ;
+
+T_empty				::= 	"" ;
+T_uint				::= 	[0-9]+ ;
+T_int				::= 	-?[0-9]+ ;
+T_id				::= 	[a-z][a-z0-9_]* ;
